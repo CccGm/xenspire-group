@@ -9,9 +9,10 @@ const Login = () => {
 
   const handleEmailChange = (e) => setEmail(e.target.value);
   const handlePasswordChange = (e) => setPassword(e.target.value);
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Add login logic here (e.g., API call)
+
     console.log("Email:", email);
     console.log("Password:", password);
   };
@@ -63,7 +64,7 @@ const Login = () => {
                         <label htmlFor="remember">Remember for 30 days</label>
                       </div>
                       <div className={styles.forgot_wrap}>
-                        <a href="#">Forgot password?</a>
+                        <a href="/forgotPass">Forgot password?</a>
                       </div>
                     </div>
                     <div className={styles.form_group}>

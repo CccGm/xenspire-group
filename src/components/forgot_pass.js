@@ -1,23 +1,20 @@
 import React, { useState } from "react";
-import styles from "../components/signup.module.css";
+import styles from "../components/forgot_pass.module.css";
 import logo from "../assets/images/app-logo.png";
 import loginImage from "../assets/images/login-app-icon.png";
+import icon from "../assets/images/Featured icon.png";
 
-const Signup = () => {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
+const Forgot_Pass = () => {
   const [password, setPassword] = useState("");
+  const [confimrPassword, setConfimPassword] = useState("");
 
-  const handleNameChange = (e) => setName(e.target.value);
-  const handleEmailChange = (e) => setEmail(e.target.value);
   const handlePasswordChange = (e) => setPassword(e.target.value);
-
+  const handleConfirmPasswordChange = (e) => setConfimPassword(e.target.value);
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    console.log("Name:", name);
-    console.log("Email:", email);
+    // Add login logic here (e.g., API call)
     console.log("Password:", password);
+    console.log("Confirm Password:", confimrPassword);
   };
 
   return (
@@ -31,51 +28,35 @@ const Signup = () => {
               </div>
               <div className={styles.form_wrapper}>
                 <div className={styles.title_wrap}>
-                  <h1 className={styles.section_title}>Sign up</h1>
+                  <img src={icon} alt="icon" />
+                  <h1 className={styles.section_title}>Reset your Password</h1>
+                  <span className={styles.sub_title}>
+                    Must be at least 8 characters.
+                  </span>
                 </div>
                 <form onSubmit={handleSubmit}>
                   <div className={styles.form_inner}>
                     <div className={styles.form_group}>
-                      <label htmlFor="name">Name*</label>
                       <input
                         type="text"
-                        id="name"
-                        placeholder="Enter your name"
-                        value={name}
-                        onChange={handleNameChange}
-                      />
-                    </div>
-                    <div className={styles.form_group}>
-                      <label htmlFor="email">Email*</label>
-                      <input
-                        type="email"
-                        id="email"
-                        placeholder="Enter your email"
-                        value={email}
-                        onChange={handleEmailChange}
-                      />
-                    </div>
-                    <div className={styles.form_group}>
-                      <label htmlFor="password">Password*</label>
-                      <input
-                        type="password"
                         id="password"
-                        placeholder="Create a password"
+                        placeholder="Choose a password"
                         value={password}
                         onChange={handlePasswordChange}
                       />
-                      <label htmlFor="suggesion" className={styles.suggesion}>
-                        Must be at least 8 characters.
-                      </label>
+                    </div>
+                    <div className={styles.form_group}>
+                      <input
+                        type="text"
+                        id="confirmPassword"
+                        placeholder="Confirm password"
+                        value={confimrPassword}
+                        onChange={handleConfirmPasswordChange}
+                      />
                     </div>
 
                     <div className={styles.form_group}>
-                      <button type="submit">Get started</button>
-                    </div>
-                    <div className={`${styles.form_group}`}>
-                      <p className={styles.form_text}>
-                        Already have an account? <a href="/">Log in</a>
-                      </p>
+                      <button type="submit">Continue</button>
                     </div>
                   </div>
                 </form>
@@ -110,4 +91,4 @@ const Signup = () => {
   );
 };
 
-export default Signup;
+export default Forgot_Pass;
