@@ -1,20 +1,20 @@
 import React, { useState } from "react";
-import styles from "../components/forgot_pass.module.css";
-import logo from "../assets/images/app-logo.png";
-import loginImage from "../assets/images/login-app-icon.png";
-import icon from "../assets/images/Featured icon.png";
+import styles from "./login.module.css";
+import logo from "../../assets/images/app-logo.png";
+import loginImage from "../../assets/images/login-app-icon.png";
 
-const Forgot_Pass = () => {
+const Login = () => {
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [confimrPassword, setConfimPassword] = useState("");
 
+  const handleEmailChange = (e) => setEmail(e.target.value);
   const handlePasswordChange = (e) => setPassword(e.target.value);
-  const handleConfirmPasswordChange = (e) => setConfimPassword(e.target.value);
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Add login logic here (e.g., API call)
+
+    console.log("Email:", email);
     console.log("Password:", password);
-    console.log("Confirm Password:", confimrPassword);
   };
 
   return (
@@ -28,35 +28,52 @@ const Forgot_Pass = () => {
               </div>
               <div className={styles.form_wrapper}>
                 <div className={styles.title_wrap}>
-                  <img src={icon} alt="icon" />
-                  <h1 className={styles.section_title}>Reset your Password</h1>
+                  <h1 className={styles.section_title}>
+                    Welcome to Xenflexer Program for IT Consultants
+                  </h1>
                   <span className={styles.sub_title}>
-                    Must be at least 8 characters.
+                    Welcome back! Please enter your details.
                   </span>
                 </div>
                 <form onSubmit={handleSubmit}>
                   <div className={styles.form_inner}>
                     <div className={styles.form_group}>
+                      <label htmlFor="email">Email</label>
                       <input
-                        type="text"
+                        type="email"
+                        id="email"
+                        placeholder="Enter your email"
+                        value={email}
+                        onChange={handleEmailChange}
+                      />
+                    </div>
+                    <div className={styles.form_group}>
+                      <label htmlFor="password">Password</label>
+                      <input
+                        type="password"
                         id="password"
-                        placeholder="Choose a password"
+                        placeholder="••••••••"
                         value={password}
                         onChange={handlePasswordChange}
                       />
                     </div>
-                    <div className={styles.form_group}>
-                      <input
-                        type="text"
-                        id="confirmPassword"
-                        placeholder="Confirm password"
-                        value={confimrPassword}
-                        onChange={handleConfirmPasswordChange}
-                      />
+                    <div
+                      className={`${styles.form_group} ${styles.form_group_row}`}>
+                      <div className={styles.remember_wrap}>
+                        <input type="checkbox" id="remember" />
+                        <label htmlFor="remember">Remember for 30 days</label>
+                      </div>
+                      <div className={styles.forgot_wrap}>
+                        <a href="/forgotPass">Forgot password?</a>
+                      </div>
                     </div>
-
                     <div className={styles.form_group}>
-                      <button type="submit">Continue</button>
+                      <button type="submit">Sign in</button>
+                    </div>
+                    <div className={`${styles.form_group}`}>
+                      <p className={styles.form_text}>
+                        Don’t have an account? <a href="/signup">Sign up</a>
+                      </p>
                     </div>
                   </div>
                 </form>
@@ -91,4 +108,4 @@ const Forgot_Pass = () => {
   );
 };
 
-export default Forgot_Pass;
+export default Login;

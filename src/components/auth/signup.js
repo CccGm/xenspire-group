@@ -1,18 +1,21 @@
 import React, { useState } from "react";
-import styles from "../components/login.module.css";
-import logo from "../assets/images/app-logo.png";
-import loginImage from "../assets/images/login-app-icon.png";
+import styles from "./signup.module.css";
+import logo from "../../assets/images/app-logo.png";
+import loginImage from "../../assets/images/login-app-icon.png";
 
-const Login = () => {
+const Signup = () => {
+  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  const handleNameChange = (e) => setName(e.target.value);
   const handleEmailChange = (e) => setEmail(e.target.value);
   const handlePasswordChange = (e) => setPassword(e.target.value);
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
+    console.log("Name:", name);
     console.log("Email:", email);
     console.log("Password:", password);
   };
@@ -28,17 +31,22 @@ const Login = () => {
               </div>
               <div className={styles.form_wrapper}>
                 <div className={styles.title_wrap}>
-                  <h1 className={styles.section_title}>
-                    Welcome to Xenflexer Program for IT Consultants
-                  </h1>
-                  <span className={styles.sub_title}>
-                    Welcome back! Please enter your details.
-                  </span>
+                  <h1 className={styles.section_title}>Sign up</h1>
                 </div>
                 <form onSubmit={handleSubmit}>
                   <div className={styles.form_inner}>
                     <div className={styles.form_group}>
-                      <label htmlFor="email">Email</label>
+                      <label htmlFor="name">Name*</label>
+                      <input
+                        type="text"
+                        id="name"
+                        placeholder="Enter your name"
+                        value={name}
+                        onChange={handleNameChange}
+                      />
+                    </div>
+                    <div className={styles.form_group}>
+                      <label htmlFor="email">Email*</label>
                       <input
                         type="email"
                         id="email"
@@ -48,31 +56,25 @@ const Login = () => {
                       />
                     </div>
                     <div className={styles.form_group}>
-                      <label htmlFor="password">Password</label>
+                      <label htmlFor="password">Password*</label>
                       <input
                         type="password"
                         id="password"
-                        placeholder="••••••••"
+                        placeholder="Create a password"
                         value={password}
                         onChange={handlePasswordChange}
                       />
+                      <label htmlFor="suggesion" className={styles.suggesion}>
+                        Must be at least 8 characters.
+                      </label>
                     </div>
-                    <div
-                      className={`${styles.form_group} ${styles.form_group_row}`}>
-                      <div className={styles.remember_wrap}>
-                        <input type="checkbox" id="remember" />
-                        <label htmlFor="remember">Remember for 30 days</label>
-                      </div>
-                      <div className={styles.forgot_wrap}>
-                        <a href="/forgotPass">Forgot password?</a>
-                      </div>
-                    </div>
+
                     <div className={styles.form_group}>
-                      <button type="submit">Sign in</button>
+                      <button type="submit">Get started</button>
                     </div>
                     <div className={`${styles.form_group}`}>
                       <p className={styles.form_text}>
-                        Don’t have an account? <a href="/signup">Sign up</a>
+                        Already have an account? <a href="/">Log in</a>
                       </p>
                     </div>
                   </div>
@@ -108,4 +110,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default Signup;

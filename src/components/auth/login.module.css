@@ -61,7 +61,7 @@
             width: 10vw;
             height: 8vw;
             background-position: bottom;
-            background-image: url(../assets/images/line-pattern.svg);
+            background-image: url(../../assets/images/line-pattern.svg);
             background-repeat: no-repeat;
             background-size: cover;
         }
