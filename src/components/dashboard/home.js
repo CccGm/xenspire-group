@@ -1,9 +1,7 @@
 import * as React from "react";
-import Box from "@mui/material/Box";
 import Stepper from "@mui/material/Stepper";
 import Step from "@mui/material/Step";
 import StepLabel from "@mui/material/StepLabel";
-import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import { My_Experience } from "./my_experience";
 import { My_Information } from "./my_information";
@@ -68,9 +66,9 @@ export function Home() {
       case 0:
         return <My_Information next={handleNext} />;
       case 1:
-        return <My_Experience />;
+        return <My_Experience next={handleNext} />;
       case 2:
-        return <Upload_Document />;
+        return <Upload_Document next={handleNext} />;
       case 3:
         return <Volantary_Disclosures />;
       default:
@@ -80,7 +78,7 @@ export function Home() {
 
   return (
     <div className="pb-20">
-      <div className="pt-10">
+      <div className="py-10">
         <Stepper activeStep={activeStep} alternativeLabel>
           {steps.map((label, index) => {
             const stepProps = {};

@@ -1,5 +1,5 @@
-import { Button, FormLabel, MenuItem, Select, TextField } from "@mui/material";
 import React from "react";
+import { Button, FormLabel, MenuItem, Select, TextField } from "@mui/material";
 
 export const My_Information = ({ next }) => {
   const [hearAboutUs, setHearAboutUs] = React.useState("");
@@ -30,8 +30,8 @@ export const My_Information = ({ next }) => {
   };
 
   return (
-    <div className="my-6">
-      <form className="mx-40" onClick={handleClick}>
+    <div>
+      <form className="mx-40" onSubmit={handleClick}>
         <div className="grid grid-flow-col justify-between items-center">
           <FormLabel style={{ color: "#344054" }}>
             How did you hear about Us?
@@ -269,7 +269,7 @@ export const My_Information = ({ next }) => {
         </div>
         <div className="mt-5 justify-end flex">
           <Button
-            style={{ color: "white" }}
+            style={{ color: "white", borderColor: "#7F56D9" }}
             variant="contained"
             sx={{
               backgroundColor: "#7B964A",
@@ -281,7 +281,7 @@ export const My_Information = ({ next }) => {
             Save
           </Button>
           <Button
-            style={{ color: "white" }}
+            style={{ color: "white", borderColor: "#7F56D9" }}
             variant="contained"
             sx={{
               marginLeft: 5,

@@ -8,7 +8,7 @@ export const DashBoard = () => {
   return (
     <div className="min-h-screen bg-white">
       <SideNav />
-      <div className="xl:ml-72 border-cyan-500 ">
+      <div className="ml-72 border-cyan-500 ">
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="*" element={<Navigate to="/" replace />} />
