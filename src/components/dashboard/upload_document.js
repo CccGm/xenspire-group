@@ -1,10 +1,13 @@
-import { Button, TableHead } from "@mui/material";
 import React from "react";
+import {
+  Button,
+  TableHead,
+  Table,
+  TableBody,
+  TableRow,
+  TableCell,
+} from "@mui/material";
 import { styled } from "@mui/material/styles";
-import Table from "@mui/material/Table";
-import TableBody from "@mui/material/TableBody";
-import TableCell, { tableCellClasses } from "@mui/material/TableCell";
-import TableRow from "@mui/material/TableRow";
 import { UploadFileOutlined } from "@mui/icons-material";
 import pdf from "../../assets/images/pdf-icon.png";
 import jpg from "../../assets/images/jpf-icon.png";
@@ -24,15 +27,9 @@ export const Upload_Document = ({ next }) => {
     console.log("Upload Documnet");
   };
 
-  const StyledTableCell = styled(TableCell)(({ theme }) => ({
-    [`&.${tableCellClasses.body}`]: {
-      fontSize: 14,
-    },
-  }));
-
   const StyledTableRow = styled(TableRow)(({ theme }) => ({
     "&:nth-of-type(odd)": {
-      backgroundColor: theme.palette.action.hover,
+      backgroundColor: "#F9FAFB",
     },
     // hide last border
     "&:last-child td, &:last-child th": {
@@ -57,35 +54,34 @@ export const Upload_Document = ({ next }) => {
           <Table aria-label="customized table">
             <TableHead>
               <TableRow>
-                <StyledTableCell
-                  style={{ fontWeight: "bold", color: "#475467" }}>
+                <TableCell style={{ fontWeight: "bold", color: "#475467" }}>
                   Document Name
-                </StyledTableCell>
-                <StyledTableCell
+                </TableCell>
+                <TableCell
                   align="center"
                   style={{ fontWeight: "bold", color: "#475467" }}>
                   Upload File
-                </StyledTableCell>
-                <StyledTableCell
+                </TableCell>
+                <TableCell
                   align="center"
                   style={{ fontWeight: "bold", color: "#475467" }}>
                   Updated Status
-                </StyledTableCell>
+                </TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
               {/* pdf */}
               <StyledTableRow key="pdf">
-                <StyledTableCell component="th" scope="row">
+                <TableCell component="th" scope="row">
                   <div className="grid grid-flow-col justify-start">
-                    <img src={pdf} />
+                    <img src={pdf} alt="pdf logo" />
                     <div className="grid grid-flow-row ml-5">
                       <text style={{ color: "#101828" }}>Resume</text>
                       <text style={{ color: "#475467" }}>200 KB</text>
                     </div>
                   </div>
-                </StyledTableCell>
-                <StyledTableCell align="center">
+                </TableCell>
+                <TableCell align="center">
                   <Button
                     style={{
                       color: "#53783B",
@@ -96,23 +92,23 @@ export const Upload_Document = ({ next }) => {
                     startIcon={<UploadFileOutlined />}>
                     Upload
                   </Button>
-                </StyledTableCell>
-                <StyledTableCell align="center" style={{ color: "#475467" }}>
+                </TableCell>
+                <TableCell align="center" style={{ color: "#475467" }}>
                   {resume ? "Uploaded" : "Pending"}
-                </StyledTableCell>
+                </TableCell>
               </StyledTableRow>
               {/* jpg */}
               <StyledTableRow key="jpg">
-                <StyledTableCell component="th" scope="row">
+                <TableCell component="th" scope="row">
                   <div className="grid grid-flow-col justify-start">
-                    <img src={jpg} />
+                    <img src={jpg} alt="jpg logo" />
                     <div className="grid grid-flow-row ml-5">
                       <text style={{ color: "#101828" }}>Certificates</text>
                       <text style={{ color: "#475467" }}>720 KB</text>
                     </div>
                   </div>
-                </StyledTableCell>
-                <StyledTableCell align="center">
+                </TableCell>
+                <TableCell align="center">
                   <Button
                     style={{
                       color: "#53783B",
@@ -123,16 +119,16 @@ export const Upload_Document = ({ next }) => {
                     startIcon={<UploadFileOutlined />}>
                     Upload
                   </Button>
-                </StyledTableCell>
-                <StyledTableCell align="center" style={{ color: "#475467" }}>
+                </TableCell>
+                <TableCell align="center" style={{ color: "#475467" }}>
                   {certificate ? "Uploaded" : "Pending"}
-                </StyledTableCell>
+                </TableCell>
               </StyledTableRow>
               {/* mp4 */}
               <StyledTableRow key="mp4">
-                <StyledTableCell component="th" scope="row">
+                <TableCell component="th" scope="row">
                   <div className="grid grid-flow-col justify-start">
-                    <img src={mp4} />
+                    <img src={mp4} alt="mp4 logo" />
                     <div className="grid grid-flow-row ml-5">
                       <text style={{ color: "#101828" }}>
                         Proof of Identification
@@ -140,8 +136,8 @@ export const Upload_Document = ({ next }) => {
                       <text style={{ color: "#475467" }}>16 MB</text>
                     </div>
                   </div>
-                </StyledTableCell>
-                <StyledTableCell align="center">
+                </TableCell>
+                <TableCell align="center">
                   <Button
                     style={{
                       color: "#53783B",
@@ -152,23 +148,23 @@ export const Upload_Document = ({ next }) => {
                     startIcon={<UploadFileOutlined />}>
                     Upload
                   </Button>
-                </StyledTableCell>
-                <StyledTableCell align="center" style={{ color: "#475467" }}>
+                </TableCell>
+                <TableCell align="center" style={{ color: "#475467" }}>
                   {proof ? "Uploaded" : "Pending"}
-                </StyledTableCell>
+                </TableCell>
               </StyledTableRow>
               {/* fig */}
               <StyledTableRow key="fig">
-                <StyledTableCell component="th" scope="row">
+                <TableCell component="th" scope="row">
                   <div className="grid grid-flow-col justify-start">
-                    <img src={fig} />
+                    <img src={fig} alt="fig logo" />
                     <div className="grid grid-flow-row ml-5">
                       <text style={{ color: "#101828" }}>Tax Document</text>
                       <text style={{ color: "#475467" }}>4.2 MB</text>
                     </div>
                   </div>
-                </StyledTableCell>
-                <StyledTableCell align="center">
+                </TableCell>
+                <TableCell align="center">
                   <Button
                     style={{
                       color: "#53783B",
@@ -179,23 +175,23 @@ export const Upload_Document = ({ next }) => {
                     startIcon={<UploadFileOutlined />}>
                     Upload
                   </Button>
-                </StyledTableCell>
-                <StyledTableCell align="center" style={{ color: "#475467" }}>
+                </TableCell>
+                <TableCell align="center" style={{ color: "#475467" }}>
                   {tax ? "Uploaded" : "Pending"}
-                </StyledTableCell>
+                </TableCell>
               </StyledTableRow>
               {/* docx */}
               <StyledTableRow key="docx">
-                <StyledTableCell component="th" scope="row">
+                <TableCell component="th" scope="row">
                   <div className="grid grid-flow-col justify-start">
-                    <img src={docx} />
+                    <img src={docx} alt="docx logo" />
                     <div className="grid grid-flow-row ml-5">
                       <text style={{ color: "#101828" }}>Agreement</text>
                       <text style={{ color: "#475467" }}>400 KB</text>
                     </div>
                   </div>
-                </StyledTableCell>
-                <StyledTableCell align="center">
+                </TableCell>
+                <TableCell align="center">
                   <Button
                     style={{
                       color: "#53783B",
@@ -206,10 +202,10 @@ export const Upload_Document = ({ next }) => {
                     startIcon={<UploadFileOutlined />}>
                     Upload
                   </Button>
-                </StyledTableCell>
-                <StyledTableCell align="center" style={{ color: "#475467" }}>
+                </TableCell>
+                <TableCell align="center" style={{ color: "#475467" }}>
                   {agreement ? "Uploaded" : "Pending"}
-                </StyledTableCell>
+                </TableCell>
               </StyledTableRow>
             </TableBody>
           </Table>
