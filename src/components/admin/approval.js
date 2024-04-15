@@ -1,6 +1,5 @@
 import React from "react";
 import {
-  Button,
   TableHead,
   Table,
   TableBody,
@@ -12,46 +11,62 @@ import {
   MenuItem,
 } from "@mui/material";
 import { styled } from "@mui/material/styles";
-import { CreateTimeSheet } from "./createTimeSheet";
 import { Search } from "@mui/icons-material";
+import { PendingApproval } from "./pendingApproval";
 
 export const Approval = () => {
   const Document_Data = [
     {
+      id: 1,
       name: "timesheet1",
       from: "2021-08-15",
       tofrom: "2023-01-10",
       status: "Open",
+      hour: 8,
     },
     {
+      id: 2,
       name: "timesheet2",
       from: "2024-05-18",
       tofrom: "2024-10-15",
       status: "Pending",
+      hour: 8,
     },
     {
+      id: 3,
       name: "timesheet3",
       from: "2020-04-10",
       tofrom: "2022-04-10",
       status: "Uploaded",
+      hour: 6,
     },
     {
+      id: 4,
       name: "timesheet4",
       from: "2023-02-26",
       tofrom: "2024-04-08",
       status: "Pending",
+      hour: 4,
     },
     {
+      id: 5,
       name: "timesheet5",
       from: "2022-02-25",
       tofrom: "2023-07-05",
       status: "Uploaded",
+      hour: 4,
+    },
+    {
+      id: 6,
+      name: "timesheet6",
+      from: "2024-05-18",
+      tofrom: "2024-10-15",
+      status: "Pending",
+      hour: 8,
     },
   ];
-  const [create, setCreate] = React.useState(false);
   const [name, setName] = React.useState("");
-  const [select, setSelect] = React.useState("");
-  const [array, serArray] = React.useState(Document_Data);
+  const [search, setSearch] = React.useState("");
   const names = [
     "Oliver Hansen",
     "Van Henry",
@@ -78,21 +93,8 @@ export const Approval = () => {
     },
   }));
 
-  const Add_Data = (data) => {
-    setCreate(false);
-
-    let add_Data = {
-      name: data?.name,
-      from: data?.from,
-      tofrom: data?.toFrom,
-      status: data?.aplication.length > 2 ? "Pending" : "Open",
-    };
-
-    serArray((old) => [...old, add_Data]);
-  };
-
   return (
-    <div className="mx-32 pt-10 pb-20">
+    <div className="mx-20 pt-10 pb-20">
       <div className="flex justify-center">
         <text
           style={{
@@ -100,12 +102,14 @@ export const Approval = () => {
             fontWeight: "bold",
             fontSize: 28,
           }}>
-          Timesheet Dashboard
+          Employee Approval
         </text>
       </div>
       <div className="my-8 grid grid-flow-col justify-between">
         <TextField
           size="small"
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
           placeholder="Search Employee for Approval"
           InputProps={{
             startAdornment: (
@@ -153,50 +157,56 @@ export const Approval = () => {
         Go to Dashboard
       </a>
 
-      {/* table */}
-      <div className="mt-3  border border-app-border rounded-md ">
-        <Table aria-label="customized table">
-          <TableHead sx={{ backgroundColor: "#53783B" }}>
-            <TableRow>
-              <TableCell style={{ fontWeight: "bold", color: "#ffffff" }}>
-                Name
-              </TableCell>
-              <TableCell
-                align="center"
-                style={{ fontWeight: "bold", color: "#ffffff" }}>
-                Timesheet Period
-              </TableCell>
+      {search ? (
+        <PendingApproval data={Document_Data} />
+      ) : (
+        <>
+          {/* table */}
+          <div className="mt-3  border border-app-border rounded-md ">
+            <Table aria-label="customized table">
+              <TableHead sx={{ backgroundColor: "#53783B" }}>
+                <TableRow>
+                  <TableCell style={{ fontWeight: "bold", color: "#ffffff" }}>
+                    Name
+                  </TableCell>
+                  <TableCell
+                    align="center"
+                    style={{ fontWeight: "bold", color: "#ffffff" }}>
+                    Timesheet Period
+                  </TableCell>
 
-              <TableCell
-                align="center"
-                style={{ fontWeight: "bold", color: "#ffffff" }}>
-                Status
-              </TableCell>
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {array.map((row) => (
-              <StyledTableRow key={row.name}>
-                <TableCell component="th" scope="row">
-                  {row.name}
-                </TableCell>
-                <TableCell align="center">
-                  {row.from} to {row.tofrom}
-                </TableCell>
+                  <TableCell
+                    align="center"
+                    style={{ fontWeight: "bold", color: "#ffffff" }}>
+                    Status
+                  </TableCell>
+                </TableRow>
+              </TableHead>
+              <TableBody>
+                {Document_Data.map((row) => (
+                  <StyledTableRow key={row.name}>
+                    <TableCell component="th" scope="row">
+                      {row.name}
+                    </TableCell>
+                    <TableCell align="center">
+                      {row.from} to {row.tofrom}
+                    </TableCell>
 
-                <TableCell
-                  align="center"
-                  sx={{
-                    backgroundColor:
-                      row.status === "Pending" ? "#FFFFFF" : "#F9FAFB",
-                  }}>
-                  {row.status}
-                </TableCell>
-              </StyledTableRow>
-            ))}
-          </TableBody>
-        </Table>
-      </div>
+                    <TableCell
+                      align="center"
+                      sx={{
+                        backgroundColor:
+                          row.status === "Pending" ? "#FFFFFF" : "#F9FAFB",
+                      }}>
+                      {row.status}
+                    </TableCell>
+                  </StyledTableRow>
+                ))}
+              </TableBody>
+            </Table>
+          </div>
+        </>
+      )}
     </div>
   );
 };

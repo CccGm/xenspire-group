@@ -6,15 +6,12 @@ import {
   TableBody,
   TableCell,
   TableRow,
-  TextField,
-  InputAdornment,
   Select,
   MenuItem,
   FormLabel,
 } from "@mui/material";
 import { styled } from "@mui/material/styles";
-import { CreateTimeSheet } from "./createTimeSheet";
-import { CloudUploadOutlined, Search } from "@mui/icons-material";
+import { CloudUploadOutlined } from "@mui/icons-material";
 
 export const DashboardTimeSheet = () => {
   const Document_Data = [
@@ -55,7 +52,6 @@ export const DashboardTimeSheet = () => {
     },
   ];
   const [timeSheet, setTimeSheet] = React.useState("");
-  const [array, serArray] = React.useState(Document_Data);
   const [submittion, setSubmission] = React.useState(false);
 
   const names = [
@@ -93,7 +89,7 @@ export const DashboardTimeSheet = () => {
             fontWeight: "bold",
             fontSize: 28,
           }}>
-          Employee Approval
+          Timesheet Dashboard
         </text>
       </div>
       <div className="my-8 grid grid-flow-col justify-around">
@@ -161,7 +157,7 @@ export const DashboardTimeSheet = () => {
                 </TableRow>
               </TableHead>
               <TableBody>
-                {array.map((row) => (
+                {Document_Data.map((row) => (
                   <StyledTableRow key={row.name}>
                     <TableCell>
                       {row.from} to {row.tofrom}
@@ -171,7 +167,7 @@ export const DashboardTimeSheet = () => {
                     <TableCell align="center">{row.hour}</TableCell>
                     <TableCell align="center">{row.status}</TableCell>
                     <TableCell align="center">
-                      {row.status == "Rejected" ? (
+                      {row.status === "Rejected" ? (
                         <Button
                           size="small"
                           variant="contained"
@@ -221,7 +217,7 @@ export const DashboardTimeSheet = () => {
                 </TableRow>
               </TableHead>
               <TableBody>
-                {array.map((row) => (
+                {Document_Data.map((row) => (
                   <StyledTableRow key={row.name}>
                     <TableCell>
                       {row.from} to {row.tofrom}

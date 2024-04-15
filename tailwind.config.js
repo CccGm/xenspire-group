@@ -14,6 +14,7 @@ module.exports = {
         cycle: "#7F56D9",
         border: "#475467",
         offWhite: "#F9FAFB",
+        simpleBorder: "#EAECF0",
       },
     },
   },
