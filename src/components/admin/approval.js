@@ -145,7 +145,7 @@ export const Approval = () => {
         </Select>
       </div>
       <a
-        href="/dashboard"
+        href="/admin/dashboard"
         style={{
           borderWidth: 1,
           color: "white",

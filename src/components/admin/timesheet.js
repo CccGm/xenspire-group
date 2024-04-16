@@ -90,7 +90,7 @@ export const TimeSheet = () => {
         <>
           <div className="my-3 justify-end flex">
             <a
-              href="/approval"
+              href="/admin/approval"
               style={{
                 borderWidth: 1,
                 color: "white",

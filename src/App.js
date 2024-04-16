@@ -8,8 +8,8 @@ function App() {
   return (
     <BrowserRouter>
       {/* <Auth /> */}
-      {/* <DashBoard /> */}
-      <Admin />
+      <DashBoard />
+      {/* <Admin /> */}
     </BrowserRouter>
   );
 }
