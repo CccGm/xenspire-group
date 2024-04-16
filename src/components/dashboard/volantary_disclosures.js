@@ -9,11 +9,12 @@ import {
 
 export const Volantary_Disclosures = () => {
   const [update, setUpdate] = React.useState("");
-  const [notification, setNotification] = React.useState("");
+  const [notification, setNotification] = React.useState();
 
   const handleClick = (e) => {
     e.preventDefault();
-    console.log("volantary disclosures");
+    console.log("update get :" + update);
+    console.log("notification get :" + notification);
   };
 
   return (
@@ -25,8 +26,8 @@ export const Volantary_Disclosures = () => {
             being posted?
           </FormLabel>
           <RadioGroup
-            aria-labelledby="demo-controlled-radio-buttons-group"
-            name="controlled-radio-buttons-group"
+            aria-labelledby="update"
+            name="update"
             value={update}
             onChange={(e) => setUpdate(e.target.value)}>
             <FormControlLabel
@@ -47,8 +48,8 @@ export const Volantary_Disclosures = () => {
             for Newsletter?
           </FormLabel>
           <RadioGroup
-            aria-labelledby="demo-controlled-radio-buttons-group"
-            name="controlled-radio-buttons-group"
+            aria-labelledby="notification"
+            name="notification"
             value={notification}
             onChange={(e) => setNotification(e.target.value)}>
             <FormControlLabel

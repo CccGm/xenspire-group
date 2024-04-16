@@ -16,15 +16,19 @@ import fig from "../../assets/images/fig-icon.png";
 import docx from "../../assets/images/docx-icon.png";
 
 export const Upload_Document = ({ next }) => {
-  const [resume, setResume] = React.useState("abc");
+  const [resume, setResume] = React.useState("");
   const [certificate, setCretificate] = React.useState("");
-  const [proof, setProf] = React.useState("abc");
-  const [tax, setTax] = React.useState("abc");
+  const [proof, setProf] = React.useState("");
+  const [tax, setTax] = React.useState("");
   const [agreement, setAgreement] = React.useState("");
 
   const handleClick = (e) => {
     e.preventDefault();
-    console.log("Upload Documnet");
+    console.log("resume : " + resume);
+    console.log("certificate : " + certificate);
+    console.log("proof : " + proof);
+    console.log("tax : " + tax);
+    console.log("agreement : " + agreement);
   };
 
   const StyledTableRow = styled(TableRow)(({ theme }) => ({
@@ -36,6 +40,18 @@ export const Upload_Document = ({ next }) => {
       border: 0,
     },
   }));
+
+  const VisuallyHiddenInput = styled("input")({
+    clip: "rect(0 0 0 0)",
+    clipPath: "inset(50%)",
+    height: 1,
+    overflow: "hidden",
+    position: "absolute",
+    bottom: 0,
+    left: 0,
+    whiteSpace: "nowrap",
+    width: 1,
+  });
 
   return (
     <div>
@@ -83,6 +99,7 @@ export const Upload_Document = ({ next }) => {
                 </TableCell>
                 <TableCell align="center">
                   <Button
+                    component="label"
                     style={{
                       color: "#53783B",
                       borderColor: "#53783B",
@@ -91,6 +108,10 @@ export const Upload_Document = ({ next }) => {
                     variant="outlined"
                     startIcon={<UploadFileOutlined />}>
                     Upload
+                    <VisuallyHiddenInput
+                      type="file"
+                      onChange={(e) => setResume(e.target.value)}
+                    />
                   </Button>
                 </TableCell>
                 <TableCell align="center" style={{ color: "#475467" }}>
@@ -110,6 +131,7 @@ export const Upload_Document = ({ next }) => {
                 </TableCell>
                 <TableCell align="center">
                   <Button
+                    component="label"
                     style={{
                       color: "#53783B",
                       borderColor: "#53783B",
@@ -118,6 +140,10 @@ export const Upload_Document = ({ next }) => {
                     variant="outlined"
                     startIcon={<UploadFileOutlined />}>
                     Upload
+                    <VisuallyHiddenInput
+                      type="file"
+                      onChange={(e) => setCretificate(e.target.value)}
+                    />
                   </Button>
                 </TableCell>
                 <TableCell align="center" style={{ color: "#475467" }}>
@@ -139,6 +165,7 @@ export const Upload_Document = ({ next }) => {
                 </TableCell>
                 <TableCell align="center">
                   <Button
+                    component="label"
                     style={{
                       color: "#53783B",
                       borderColor: "#53783B",
@@ -147,6 +174,10 @@ export const Upload_Document = ({ next }) => {
                     variant="outlined"
                     startIcon={<UploadFileOutlined />}>
                     Upload
+                    <VisuallyHiddenInput
+                      type="file"
+                      onChange={(e) => setProf(e.target.value)}
+                    />
                   </Button>
                 </TableCell>
                 <TableCell align="center" style={{ color: "#475467" }}>
@@ -166,6 +197,7 @@ export const Upload_Document = ({ next }) => {
                 </TableCell>
                 <TableCell align="center">
                   <Button
+                    component="label"
                     style={{
                       color: "#53783B",
                       borderColor: "#53783B",
@@ -174,6 +206,10 @@ export const Upload_Document = ({ next }) => {
                     variant="outlined"
                     startIcon={<UploadFileOutlined />}>
                     Upload
+                    <VisuallyHiddenInput
+                      type="file"
+                      onChange={(e) => setTax(e.target.value)}
+                    />
                   </Button>
                 </TableCell>
                 <TableCell align="center" style={{ color: "#475467" }}>
@@ -193,6 +229,7 @@ export const Upload_Document = ({ next }) => {
                 </TableCell>
                 <TableCell align="center">
                   <Button
+                    component="label"
                     style={{
                       color: "#53783B",
                       borderColor: "#53783B",
@@ -201,6 +238,10 @@ export const Upload_Document = ({ next }) => {
                     variant="outlined"
                     startIcon={<UploadFileOutlined />}>
                     Upload
+                    <VisuallyHiddenInput
+                      type="file"
+                      onChange={(e) => setAgreement(e.target.value)}
+                    />
                   </Button>
                 </TableCell>
                 <TableCell align="center" style={{ color: "#475467" }}>

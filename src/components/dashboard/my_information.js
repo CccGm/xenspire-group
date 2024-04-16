@@ -26,7 +26,13 @@ export const My_Information = ({ next }) => {
 
   const handleClick = (e) => {
     e.preventDefault();
-    console.log("My_Information");
+    console.log("hearAboutUs :" + hearAboutUs);
+    console.log("country :" + country);
+    console.log("email :" + email);
+    console.log("no :" + no);
+    console.log("project :" + project);
+    console.log("xenspire in enployer:" + xenspire);
+    console.log("doYouWant xenspire :" + doYouWant);
   };
 
   return (

@@ -29,6 +29,7 @@ export const CreateTimeSheet = ({ add_Data }) => {
       aplication: aplication,
     };
     add_Data(data);
+    console.log(data);
   };
 
   return (

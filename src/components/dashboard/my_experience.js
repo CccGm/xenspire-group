@@ -8,10 +8,22 @@ import {
   TextField,
 } from "@mui/material";
 import { UploadFileOutlined } from "@mui/icons-material";
+import { styled } from "@mui/material/styles";
 
 export const My_Experience = ({ next }) => {
-  const [graduation, setGraduation] = React.useState("");
+  const [jonTitle, setJobTitle] = React.useState("");
+  const [companyName, setCompanyName] = React.useState("");
+  const [location, setLocation] = React.useState("");
+  const [date, setDate] = React.useState({ start: "", end: "" });
+  const [file, setFile] = React.useState("");
   const [radioValue, setRadioValue] = React.useState("");
+  const [school, setSchool] = React.useState("");
+  const [graduation, setGraduation] = React.useState("");
+  const [field, setfield] = React.useState("");
+  const [educatoinDate, setEduactionDate] = React.useState({
+    start: "",
+    end: "",
+  });
 
   const names = [
     "Oliver Hansen",
@@ -26,9 +38,31 @@ export const My_Experience = ({ next }) => {
     "Kelly Snyder",
   ];
 
+  const VisuallyHiddenInput = styled("input")({
+    clip: "rect(0 0 0 0)",
+    clipPath: "inset(50%)",
+    height: 1,
+    overflow: "hidden",
+    position: "absolute",
+    bottom: 0,
+    left: 0,
+    whiteSpace: "nowrap",
+    width: 1,
+  });
+
   const handleClick = (e) => {
     e.preventDefault();
-    console.log("My_Information");
+    console.log("jonTitle : " + jonTitle);
+    console.log("companyName : " + companyName);
+    console.log("location : " + location);
+    console.log("date start : " + date.start);
+    console.log("date end : " + date.end);
+    console.log("radioValue : " + radioValue ? true : false);
+    console.log("file : ", file);
+    console.log("school/univercity : " + school);
+    console.log("graduation : " + graduation);
+    console.log("educatoinDate start : " + educatoinDate.start);
+    console.log("educatoinDate end : " + educatoinDate.end);
   };
 
   return (
@@ -45,16 +79,22 @@ export const My_Experience = ({ next }) => {
           </text>
 
           <Button
-            size="small"
+            component="label"
+            role={undefined}
+            variant="outlined"
+            tabIndex={-1}
             style={{
               color: "#344054",
               borderColor: "#53783B",
               position: "absolute",
               right: 30,
             }}
-            variant="outlined"
             startIcon={<UploadFileOutlined />}>
-            Upload Resume/CV
+            Upload file
+            <VisuallyHiddenInput
+              type="file"
+              onChange={(e) => setFile(e.target.value)}
+            />
           </Button>
         </div>
         <div className="mt-3 grid grid-flow-col justify-between ">
@@ -64,6 +104,8 @@ export const My_Experience = ({ next }) => {
               size="small"
               placeholder="Enter Title"
               className="w-72"
+              value={jonTitle}
+              onChange={(e) => setJobTitle(e.target.value)}
             />
           </div>
           <div className="grid grid-flow-row gap-2 ">
@@ -72,6 +114,8 @@ export const My_Experience = ({ next }) => {
               size="small"
               placeholder="Enter Company"
               className="w-72"
+              value={companyName}
+              onChange={(e) => setCompanyName(e.target.value)}
             />
           </div>
         </div>
@@ -82,13 +126,27 @@ export const My_Experience = ({ next }) => {
               size="small"
               placeholder="Enter Location"
               className="w-72"
+              value={location}
+              onChange={(e) => setLocation(e.target.value)}
             />
           </div>
           <div className="grid grid-flow-row gap-2 ">
             <FormLabel style={{ color: "#344054" }}>Select Period</FormLabel>
             <div className="grid grid-flow-col">
-              <TextField size="small" className="w-36" type="date" />
-              <TextField size="small" className="w-36" type="date" />
+              <TextField
+                size="small"
+                className="w-36"
+                type="date"
+                value={date.start}
+                onChange={(e) => setDate({ ...date, start: e.target.value })}
+              />
+              <TextField
+                size="small"
+                className="w-36"
+                type="date"
+                value={date.end}
+                onChange={(e) => setDate({ ...date, end: e.target.value })}
+              />
             </div>
           </div>
         </div>
@@ -128,6 +186,8 @@ export const My_Experience = ({ next }) => {
               size="small"
               placeholder="Enter School/University"
               className="w-72"
+              value={school}
+              onChange={(e) => setSchool(e.target.value)}
             />
           </div>
           <div className="grid grid-flow-row gap-2 ">
@@ -161,13 +221,31 @@ export const My_Experience = ({ next }) => {
               size="small"
               placeholder="Enter Field of Study"
               className="w-72"
+              value={field}
+              onChange={(e) => setfield(e.target.value)}
             />
           </div>
           <div className="grid grid-flow-row gap-2 ">
             <FormLabel style={{ color: "#344054" }}>Select Period</FormLabel>
             <div className="grid grid-flow-col">
-              <TextField size="small" className="w-36" type="date" />
-              <TextField size="small" className="w-36" type="date" />
+              <TextField
+                size="small"
+                className="w-36"
+                type="date"
+                value={educatoinDate.start}
+                onChange={(e) =>
+                  setEduactionDate({ ...educatoinDate, start: e.target.value })
+                }
+              />
+              <TextField
+                size="small"
+                className="w-36"
+                type="date"
+                value={educatoinDate.end}
+                onChange={(e) =>
+                  setEduactionDate({ ...educatoinDate, end: e.target.value })
+                }
+              />
             </div>
           </div>
         </div>
