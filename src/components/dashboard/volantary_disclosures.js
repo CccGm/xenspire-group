@@ -6,20 +6,33 @@ import {
   Radio,
   RadioGroup,
 } from "@mui/material";
+import axios from "axios";
 
 export const Volantary_Disclosures = () => {
   const [update, setUpdate] = React.useState("");
   const [notification, setNotification] = React.useState();
 
-  const handleClick = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("update get :" + update);
-    console.log("notification get :" + notification);
+    try {
+      const response = await axios.post(
+        "http://localhost:3000/api/volantary/",
+        { update, notification }
+      );
+
+      if (response.status === 200) {
+        console.log("volantary save successfully");
+      } else {
+        console.log("volantary save failed");
+      }
+    } catch (error) {
+      console.error("volantary save error:", error.message);
+    }
   };
 
   return (
     <div>
-      <form className="mx-40" onSubmit={handleClick}>
+      <form className="mx-40" onSubmit={handleSubmit}>
         <div>
           <FormLabel>
             Please select YES if you are okay with receiving updates on new jobs

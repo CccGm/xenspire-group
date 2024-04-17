@@ -2,22 +2,38 @@ import React, { useState } from "react";
 import styles from "./signup.module.css";
 import logo from "../../assets/images/app-logo.png";
 import loginImage from "../../assets/images/login-app-icon.png";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const Signup = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
 
   const handleNameChange = (e) => setName(e.target.value);
   const handleEmailChange = (e) => setEmail(e.target.value);
   const handlePasswordChange = (e) => setPassword(e.target.value);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    try {
+      const username = name;
+      const response = await axios.post("http://localhost:3000/api/register/", {
+        username,
+        email,
+        password,
+      });
 
-    console.log("Name:", name);
-    console.log("Email:", email);
-    console.log("Password:", password);
+      if (response.status === 200) {
+        console.log("user register successfully");
+        navigate("/login");
+      } else {
+        console.log("registration failed");
+      }
+    } catch (error) {
+      console.error("Signup error:", error.message);
+    }
   };
 
   return (

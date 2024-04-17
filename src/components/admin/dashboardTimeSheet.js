@@ -12,45 +12,10 @@ import {
 } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import { CloudUploadOutlined } from "@mui/icons-material";
+import axios from "axios";
+import { DummyData } from "../utils/dummy";
 
 export const DashboardTimeSheet = () => {
-  const Document_Data = [
-    {
-      name: "timesheet1",
-      from: "2021-08-15",
-      tofrom: "2023-01-10",
-      status: "Approved",
-      hour: 8,
-    },
-    {
-      name: "timesheet2",
-      from: "2024-05-18",
-      tofrom: "2024-10-15",
-      status: "Rejected",
-      hour: 10,
-    },
-    {
-      name: "timesheet3",
-      from: "2020-04-10",
-      tofrom: "2022-04-10",
-      status: "Approved",
-      hour: 9,
-    },
-    {
-      name: "timesheet4",
-      from: "2023-02-26",
-      tofrom: "2024-04-08",
-      status: "Rejected",
-      hour: 6,
-    },
-    {
-      name: "timesheet5",
-      from: "2022-02-25",
-      tofrom: "2023-07-05",
-      status: "Rejected",
-      hour: 8,
-    },
-  ];
   const [timeSheet, setTimeSheet] = React.useState("");
   const [submittion, setSubmission] = React.useState("");
 
@@ -92,8 +57,23 @@ export const DashboardTimeSheet = () => {
     width: 1,
   });
 
-  const handleSubmit = () => {
-    console.log("submittion :" + submittion);
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await axios.post(
+        "http://localhost:3000/api/dataTimesheet/",
+        { timeSheet, submittion }
+      );
+
+      if (response.status === 200) {
+        console.log("dataTimesheet save successfully");
+      } else {
+        console.log("dataTimesheet save failed");
+      }
+    } catch (error) {
+      console.error("dataTimesheet save error:", error.message);
+    }
+    setTimeSheet("");
   };
 
   return (
@@ -173,7 +153,7 @@ export const DashboardTimeSheet = () => {
                 </TableRow>
               </TableHead>
               <TableBody>
-                {Document_Data.map((row) => (
+                {DummyData.map((row) => (
                   <StyledTableRow key={row.name}>
                     <TableCell>
                       {row.from} to {row.tofrom}
@@ -205,7 +185,7 @@ export const DashboardTimeSheet = () => {
           <div className="mt-6 flex justify-center">
             <Button
               variant="contained"
-              onClick={() => setTimeSheet("")}
+              onClick={handleSubmit}
               style={{ color: "#ffffff", backgroundColor: "#53783B" }}>
               Submit
             </Button>
@@ -233,7 +213,7 @@ export const DashboardTimeSheet = () => {
                 </TableRow>
               </TableHead>
               <TableBody>
-                {Document_Data.map((row) => (
+                {DummyData.map((row) => (
                   <StyledTableRow key={row.name}>
                     <TableCell>
                       {row.from} to {row.tofrom}

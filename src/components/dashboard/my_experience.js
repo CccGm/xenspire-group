@@ -9,6 +9,7 @@ import {
 } from "@mui/material";
 import { UploadFileOutlined } from "@mui/icons-material";
 import { styled } from "@mui/material/styles";
+import axios from "axios";
 
 export const My_Experience = ({ next }) => {
   const [jonTitle, setJobTitle] = React.useState("");
@@ -50,24 +51,27 @@ export const My_Experience = ({ next }) => {
     width: 1,
   });
 
-  const handleClick = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("jonTitle : " + jonTitle);
-    console.log("companyName : " + companyName);
-    console.log("location : " + location);
-    console.log("date start : " + date.start);
-    console.log("date end : " + date.end);
-    console.log("radioValue : " + radioValue ? true : false);
-    console.log("file : ", file);
-    console.log("school/univercity : " + school);
-    console.log("graduation : " + graduation);
-    console.log("educatoinDate start : " + educatoinDate.start);
-    console.log("educatoinDate end : " + educatoinDate.end);
+    try {
+      const response = await axios.post(
+        "http://localhost:3000/api/experiance/",
+        { file, jonTitle, field }
+      );
+
+      if (response.status === 200) {
+        console.log("user experience save successfully");
+      } else {
+        console.log("experience save failed");
+      }
+    } catch (error) {
+      console.error("experience save error:", error.message);
+    }
   };
 
   return (
     <div>
-      <form className="mx-40" onSubmit={handleClick}>
+      <form className="mx-40" onSubmit={handleSubmit}>
         <div className="flex justify-center">
           <text
             style={{

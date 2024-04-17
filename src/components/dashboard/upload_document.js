@@ -14,6 +14,7 @@ import jpg from "../../assets/images/jpf-icon.png";
 import mp4 from "../../assets/images/mp4-icon.png";
 import fig from "../../assets/images/fig-icon.png";
 import docx from "../../assets/images/docx-icon.png";
+import axios from "axios";
 
 export const Upload_Document = ({ next }) => {
   const [resume, setResume] = React.useState("");
@@ -22,13 +23,23 @@ export const Upload_Document = ({ next }) => {
   const [tax, setTax] = React.useState("");
   const [agreement, setAgreement] = React.useState("");
 
-  const handleClick = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("resume : " + resume);
-    console.log("certificate : " + certificate);
-    console.log("proof : " + proof);
-    console.log("tax : " + tax);
-    console.log("agreement : " + agreement);
+    try {
+      const response = await axios.post("http://localhost:3000/api/document/", {
+        resume,
+        certificate,
+        proof,
+      });
+
+      if (response.status === 200) {
+        console.log("user document save successfully");
+      } else {
+        console.log("document save failed");
+      }
+    } catch (error) {
+      console.error("document save error:", error.message);
+    }
   };
 
   const StyledTableRow = styled(TableRow)(({ theme }) => ({
@@ -55,7 +66,7 @@ export const Upload_Document = ({ next }) => {
 
   return (
     <div>
-      <form className="mx-20" onSubmit={handleClick}>
+      <form className="mx-20" onSubmit={handleSubmit}>
         <div className="flex justify-center">
           <text
             style={{

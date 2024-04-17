@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import styles from "./login.module.css";
 import logo from "../../assets/images/app-logo.png";
 import loginImage from "../../assets/images/login-app-icon.png";
+import axios from "axios";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -10,11 +11,22 @@ const Login = () => {
   const handleEmailChange = (e) => setEmail(e.target.value);
   const handlePasswordChange = (e) => setPassword(e.target.value);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    try {
+      const response = await axios.post("http://localhost:3000/api/login/", {
+        email,
+        password,
+      });
 
-    console.log("Email:", email);
-    console.log("Password:", password);
+      if (response.status === 200) {
+        console.log("user logni successfully");
+      } else {
+        console.log("login failed");
+      }
+    } catch (error) {
+      console.error("logni error:", error.message);
+    }
   };
 
   return (

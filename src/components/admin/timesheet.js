@@ -9,42 +9,11 @@ import {
 } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import { CreateTimeSheet } from "./createTimeSheet";
+import { DummyData } from "../utils/dummy";
 
 export const TimeSheet = () => {
-  const Document_Data = [
-    {
-      name: "timesheet1",
-      from: "2021-08-15",
-      tofrom: "2023-01-10",
-      status: "Open",
-    },
-    {
-      name: "timesheet2",
-      from: "2024-05-18",
-      tofrom: "2024-10-15",
-      status: "Pending",
-    },
-    {
-      name: "timesheet3",
-      from: "2020-04-10",
-      tofrom: "2022-04-10",
-      status: "Uploaded",
-    },
-    {
-      name: "timesheet4",
-      from: "2023-02-26",
-      tofrom: "2024-04-08",
-      status: "Pending",
-    },
-    {
-      name: "timesheet5",
-      from: "2022-02-25",
-      tofrom: "2023-07-05",
-      status: "Uploaded",
-    },
-  ];
   const [create, setCreate] = React.useState(false);
-  const [array, serArray] = React.useState(Document_Data);
+  const [array, serArray] = React.useState(DummyData);
 
   const StyledTableRow = styled(TableRow)(({ theme }) => ({
     "&:nth-of-type(odd)": {

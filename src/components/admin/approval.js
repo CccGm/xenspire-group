@@ -13,58 +13,9 @@ import {
 import { styled } from "@mui/material/styles";
 import { Search } from "@mui/icons-material";
 import { PendingApproval } from "./pendingApproval";
+import { DummyData } from "../utils/dummy";
 
 export const Approval = () => {
-  const Document_Data = [
-    {
-      id: 1,
-      name: "timesheet1",
-      from: "2021-08-15",
-      tofrom: "2023-01-10",
-      status: "Open",
-      hour: 8,
-    },
-    {
-      id: 2,
-      name: "timesheet2",
-      from: "2024-05-18",
-      tofrom: "2024-10-15",
-      status: "Pending",
-      hour: 8,
-    },
-    {
-      id: 3,
-      name: "timesheet3",
-      from: "2020-04-10",
-      tofrom: "2022-04-10",
-      status: "Uploaded",
-      hour: 6,
-    },
-    {
-      id: 4,
-      name: "timesheet4",
-      from: "2023-02-26",
-      tofrom: "2024-04-08",
-      status: "Pending",
-      hour: 4,
-    },
-    {
-      id: 5,
-      name: "timesheet5",
-      from: "2022-02-25",
-      tofrom: "2023-07-05",
-      status: "Uploaded",
-      hour: 4,
-    },
-    {
-      id: 6,
-      name: "timesheet6",
-      from: "2024-05-18",
-      tofrom: "2024-10-15",
-      status: "Pending",
-      hour: 8,
-    },
-  ];
   const [name, setName] = React.useState("");
   const [search, setSearch] = React.useState("");
   const names = [
@@ -158,7 +109,7 @@ export const Approval = () => {
       </a>
 
       {search ? (
-        <PendingApproval data={Document_Data} />
+        <PendingApproval data={DummyData} />
       ) : (
         <>
           {/* table */}
@@ -183,7 +134,7 @@ export const Approval = () => {
                 </TableRow>
               </TableHead>
               <TableBody>
-                {Document_Data.map((row) => (
+                {DummyData.map((row) => (
                   <StyledTableRow key={row.name}>
                     <TableCell component="th" scope="row">
                       {row.name}
