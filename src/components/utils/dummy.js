@@ -1,3 +1,5 @@
+import axios from "axios";
+
 export const DummyData = [
   {
     id: 1,
@@ -48,3 +50,19 @@ export const DummyData = [
     hour: 8,
   },
 ];
+
+export const get_Data = async () => {
+  try {
+    const response = await axios.get("http://localhost:3000/api/data/");
+
+    if (response.status === 200) {
+      console.log("data get successfully");
+    } else {
+      console.log("data get failed");
+    }
+  } catch (error) {
+    console.error("data get error:", error.message);
+  }
+};
+
+get_Data();

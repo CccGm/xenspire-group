@@ -30,7 +30,7 @@ export const My_Information = ({ next }) => {
     try {
       const response = await axios.post(
         "http://localhost:3000/api/information/",
-        { xenspire, email, no }
+        { hearAboutUs, country, xenspire, email, no, project, doYouWant }
       );
 
       if (response.status === 200) {

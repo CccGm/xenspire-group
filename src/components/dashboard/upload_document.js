@@ -30,6 +30,8 @@ export const Upload_Document = ({ next }) => {
         resume,
         certificate,
         proof,
+        tax,
+        agreement,
       });
 
       if (response.status === 200) {

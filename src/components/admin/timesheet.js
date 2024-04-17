@@ -10,6 +10,7 @@ import {
 import { styled } from "@mui/material/styles";
 import { CreateTimeSheet } from "./createTimeSheet";
 import { DummyData } from "../utils/dummy";
+import axios from "axios";
 
 export const TimeSheet = () => {
   const [create, setCreate] = React.useState(false);
@@ -39,6 +40,24 @@ export const TimeSheet = () => {
     };
 
     serArray((old) => [...old, add_Data]);
+    handleSubmit(add_Data);
+  };
+
+  const handleSubmit = async ({ add_Data }) => {
+    try {
+      const response = await axios.post(
+        "http://localhost:3000/api/addtimesheet/",
+        { add_Data }
+      );
+
+      if (response.status === 200) {
+        console.log("addtimesheet save successfully");
+      } else {
+        console.log("addtimesheet save failed");
+      }
+    } catch (error) {
+      console.error("addtimesheet save error:", error.message);
+    }
   };
 
   return (

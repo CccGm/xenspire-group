@@ -56,7 +56,18 @@ export const My_Experience = ({ next }) => {
     try {
       const response = await axios.post(
         "http://localhost:3000/api/experiance/",
-        { file, jonTitle, field }
+        {
+          companyName,
+          location,
+          file,
+          jonTitle,
+          field,
+          date,
+          radioValue,
+          school,
+          graduation,
+          educatoinDate,
+        }
       );
 
       if (response.status === 200) {
