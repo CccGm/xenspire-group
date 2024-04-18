@@ -7,10 +7,12 @@ import {
   RadioGroup,
 } from "@mui/material";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 export const Volantary_Disclosures = () => {
   const [update, setUpdate] = React.useState("");
   const [notification, setNotification] = React.useState();
+  const navigation = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -28,6 +30,7 @@ export const Volantary_Disclosures = () => {
     } catch (error) {
       console.error("volantary save error:", error.message);
     }
+    navigation("/dashboard");
   };
 
   return (

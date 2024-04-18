@@ -13,7 +13,7 @@ import {
 import { styled } from "@mui/material/styles";
 import { Search } from "@mui/icons-material";
 import { PendingApproval } from "./pendingApproval";
-import { DummyData } from "../utils/dummy";
+import { DummyData, get_Data } from "../utils/dummy";
 
 export const Approval = () => {
   const [name, setName] = React.useState("");
@@ -30,6 +30,10 @@ export const Approval = () => {
     "Virginia Andrews",
     "Kelly Snyder",
   ];
+
+  React.useState(() => {
+    get_Data();
+  }, []);
 
   const StyledTableRow = styled(TableRow)(({ theme }) => ({
     "&:nth-of-type(odd)": {
@@ -95,18 +99,6 @@ export const Approval = () => {
           ))}
         </Select>
       </div>
-      <a
-        href="/admin/dashboard"
-        style={{
-          borderWidth: 1,
-          color: "white",
-          backgroundColor: "#53783B",
-          padding: 5,
-          borderRadius: 6,
-          marginTop: 10,
-        }}>
-        Go to Dashboard
-      </a>
 
       {search ? (
         <PendingApproval data={DummyData} />

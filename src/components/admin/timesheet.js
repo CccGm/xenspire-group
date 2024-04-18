@@ -9,12 +9,14 @@ import {
 } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import { CreateTimeSheet } from "./createTimeSheet";
-import { DummyData } from "../utils/dummy";
+import { DummyData, get_Data } from "../utils/dummy";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 export const TimeSheet = () => {
   const [create, setCreate] = React.useState(false);
   const [array, serArray] = React.useState(DummyData);
+  const navigation = useNavigate();
 
   const StyledTableRow = styled(TableRow)(({ theme }) => ({
     "&:nth-of-type(odd)": {
@@ -60,6 +62,10 @@ export const TimeSheet = () => {
     }
   };
 
+  React.useState(() => {
+    get_Data();
+  }, []);
+
   return (
     <div className="mx-32 pt-10 pb-20">
       <div className="flex justify-center">
@@ -77,17 +83,19 @@ export const TimeSheet = () => {
       ) : (
         <>
           <div className="my-3 justify-end flex">
-            <a
-              href="/admin/approval"
-              style={{
-                borderWidth: 1,
-                color: "white",
+            <Button
+              style={{ color: "white", borderColor: "#7F56D9" }}
+              variant="contained"
+              sx={{
                 backgroundColor: "#53783B",
-                padding: 5,
-                borderRadius: 6,
-              }}>
+                "&:hover": {
+                  backgroundColor: "#53783B",
+                },
+                textTransform: "none",
+              }}
+              onClick={() => navigation("/approval")}>
               Go to Approval
-            </a>
+            </Button>
 
             <Button
               style={{ color: "white", borderColor: "#7F56D9" }}

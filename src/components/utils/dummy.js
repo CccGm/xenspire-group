@@ -57,12 +57,13 @@ export const get_Data = async () => {
 
     if (response.status === 200) {
       console.log("data get successfully");
+      return response;
     } else {
       console.log("data get failed");
+      return "failed";
     }
   } catch (error) {
     console.error("data get error:", error.message);
+    return error;
   }
 };
-
-get_Data();

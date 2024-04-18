@@ -37,24 +37,15 @@ export const CreateTimeSheet = ({ add_Data }) => {
       <form className="mt-16 mx-14" onSubmit={handleClick}>
         <div className="grid grid-flow-col justify-between items-center">
           <FormLabel style={{ color: "#344054" }}>Name</FormLabel>
-          <Select
-            size="small"
+          <TextField
             required
-            displayEmpty
+            size="small"
+            label="Select name"
+            className="w-72"
             value={name}
             onChange={(e) => setName(e.target.value)}
-            renderValue={(selected) => {
-              if (selected.length === 0) {
-                return <text style={{ color: "#53783B" }}>Select Name</text>;
-              }
-              return selected;
-            }}
             sx={{
-              color: "#53783B",
               ".MuiOutlinedInput-notchedOutline": {
-                borderColor: "rgba(123, 150, 74, 1)",
-              },
-              "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
                 borderColor: "rgba(123, 150, 74, 1)",
               },
               "&:hover .MuiOutlinedInput-notchedOutline": {
@@ -63,14 +54,9 @@ export const CreateTimeSheet = ({ add_Data }) => {
               ".MuiSvgIcon-root ": {
                 color: "#7B964A",
               },
+              input: { color: "#53783B" },
             }}
-            className="w-72">
-            {names.map((name) => (
-              <MenuItem key={name} value={name}>
-                {name}
-              </MenuItem>
-            ))}
-          </Select>
+          />
         </div>
         <div className="mt-4 grid grid-flow-col justify-between items-center">
           <FormLabel style={{ color: "#344054" }}>From Date</FormLabel>

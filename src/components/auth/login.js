@@ -4,7 +4,7 @@ import logo from "../../assets/images/app-logo.png";
 import loginImage from "../../assets/images/login-app-icon.png";
 import axios from "axios";
 
-const Login = () => {
+const Login = ({ setUser }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -26,6 +26,15 @@ const Login = () => {
       }
     } catch (error) {
       console.error("logni error:", error.message);
+    }
+
+    if (email === "admin@test.com") {
+      setUser("admin");
+    } else if (email === "test@test.com") {
+      setUser("user");
+    } else {
+      setUser("");
+      alert("No user found");
     }
   };
 
@@ -52,6 +61,7 @@ const Login = () => {
                     <div className={styles.form_group}>
                       <label htmlFor="email">Email</label>
                       <input
+                        required
                         type="email"
                         id="email"
                         placeholder="Enter your email"
@@ -62,6 +72,7 @@ const Login = () => {
                     <div className={styles.form_group}>
                       <label htmlFor="password">Password</label>
                       <input
+                        required
                         type="password"
                         id="password"
                         placeholder="••••••••"

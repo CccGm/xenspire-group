@@ -3,7 +3,7 @@ import { Routes, Route, Navigate } from "react-router-dom";
 import Footer from "../widgets/footer";
 import { Home } from "./home";
 import { SideNav } from "../widgets/sidenav";
-import { Admin } from "../admin";
+import { DashboardTimeSheet } from "./dashboardTimeSheet";
 
 export const DashBoard = () => {
   return (
@@ -12,7 +12,7 @@ export const DashBoard = () => {
       <div className="ml-72 border-cyan-500 ">
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/admin/*" element={<Admin />} />
+          <Route path="dashboard" element={<DashboardTimeSheet />} />
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </div>

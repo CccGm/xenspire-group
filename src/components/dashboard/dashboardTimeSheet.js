@@ -13,7 +13,7 @@ import {
 import { styled } from "@mui/material/styles";
 import { CloudUploadOutlined } from "@mui/icons-material";
 import axios from "axios";
-import { DummyData } from "../utils/dummy";
+import { DummyData, get_Data } from "../utils/dummy";
 
 export const DashboardTimeSheet = () => {
   const [timeSheet, setTimeSheet] = React.useState("");
@@ -31,6 +31,9 @@ export const DashboardTimeSheet = () => {
     "Virginia Andrews",
     "Kelly Snyder",
   ];
+  React.useState(() => {
+    get_Data();
+  }, []);
 
   const StyledTableRow = styled(TableRow)(({ theme }) => ({
     "&:nth-of-type(odd)": {

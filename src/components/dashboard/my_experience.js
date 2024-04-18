@@ -1,6 +1,7 @@
 import React from "react";
 import {
   Button,
+  FormControlLabel,
   FormLabel,
   MenuItem,
   Radio,
@@ -83,34 +84,36 @@ export const My_Experience = ({ next }) => {
   return (
     <div>
       <form className="mx-40" onSubmit={handleSubmit}>
-        <div className="flex justify-center">
+        <div className="flex justify-between">
           <text
             style={{
               color: "#53783B",
               fontWeight: "bold",
               fontSize: 28,
             }}>
-            Work Experience
+            Resume
           </text>
-
-          <Button
-            component="label"
-            role={undefined}
-            variant="outlined"
-            tabIndex={-1}
-            style={{
-              color: "#344054",
-              borderColor: "#53783B",
-              position: "absolute",
-              right: 30,
-            }}
-            startIcon={<UploadFileOutlined />}>
-            Upload file
-            <VisuallyHiddenInput
-              type="file"
-              onChange={(e) => setFile(e.target.value)}
-            />
-          </Button>
+          <div>
+            <text className="text-app-border mr-10">
+              {file ? file : "Please upload your Resume"}
+            </text>
+            <Button
+              component="label"
+              role={undefined}
+              variant="outlined"
+              tabIndex={-1}
+              style={{
+                color: "#344054",
+                borderColor: "#53783B",
+              }}
+              startIcon={<UploadFileOutlined />}>
+              Upload Resume/CV
+              <VisuallyHiddenInput
+                type="file"
+                onChange={(e) => setFile(e.target.value)}
+              />
+            </Button>
+          </div>
         </div>
         <div className="mt-3 grid grid-flow-col justify-between ">
           <div className="grid grid-flow-row gap-2">
@@ -135,19 +138,9 @@ export const My_Experience = ({ next }) => {
           </div>
         </div>
         <div className="mt-3 grid grid-flow-col justify-between ">
-          <div className="grid grid-flow-row gap-2">
-            <FormLabel style={{ color: "#344054" }}>Location</FormLabel>
-            <TextField
-              size="small"
-              placeholder="Enter Location"
-              className="w-72"
-              value={location}
-              onChange={(e) => setLocation(e.target.value)}
-            />
-          </div>
           <div className="grid grid-flow-row gap-2 ">
             <FormLabel style={{ color: "#344054" }}>Select Period</FormLabel>
-            <div className="grid grid-flow-col">
+            <div className="grid grid-flow-col gap-2">
               <TextField
                 size="small"
                 className="w-36"
@@ -160,110 +153,156 @@ export const My_Experience = ({ next }) => {
                 className="w-36"
                 type="date"
                 value={date.end}
+                disabled={radioValue ? true : false}
                 onChange={(e) => setDate({ ...date, end: e.target.value })}
               />
             </div>
           </div>
+          <div className="grid grid-flow-row gap-2">
+            <FormLabel style={{ color: "#344054" }}>Location</FormLabel>
+            <TextField
+              size="small"
+              placeholder="Enter Location"
+              className="w-72"
+              value={location}
+              onChange={(e) => setLocation(e.target.value)}
+            />
+          </div>
         </div>
-        <div className="border border-app-gray rounded-md mt-3 grid grid-flow-col justify-start ">
-          <Radio
-            checked={radioValue === "radio"}
-            value={"radio"}
-            onChange={(e) => setRadioValue(e.target.value)}
-            color="success"
-            size="small"
-            sx={{ alignItems: "flex-start" }}
-          />
-          <div className="grid grid-flow-row py-2">
-            <text style={{ color: "#344054" }}>This is my Current company</text>
-            <text style={{ color: "#475467" }}>
-              You are selecting above as your current comapny
-            </text>
+        <div className="mt-3 grid grid-flow-col justify-between ">
+          <div className="border border-app-gray rounded-md  px-3">
+            <FormControlLabel
+              control={
+                <Radio
+                  size="small"
+                  checked={radioValue === "radio"}
+                  value={"radio"}
+                  onChange={(e) => setRadioValue(e.target.value)}
+                  color="success"
+                />
+              }
+              label="This is my Current company"
+            />
+          </div>
+          <div className="w-72 justify-center flex">
+            <Button
+              style={{ color: "white", borderColor: "#7F56D9" }}
+              variant="contained"
+              sx={{
+                backgroundColor: "#7B964A",
+                "&:hover": {
+                  backgroundColor: "#7B964A",
+                },
+              }}>
+              Add Experiance
+            </Button>
           </div>
         </div>
         {/* education */}
-        <div className="mt-5 flex justify-center">
-          <text
-            style={{
-              color: "#53783B",
-              fontWeight: "bold",
-              fontSize: 28,
-            }}>
-            Education
-          </text>
-        </div>
-        <div className="mt-3 grid grid-flow-col justify-between ">
-          <div className="grid grid-flow-row gap-2">
-            <FormLabel style={{ color: "#344054" }}>
-              School/University
-            </FormLabel>
-            <TextField
-              size="small"
-              placeholder="Enter School/University"
-              className="w-72"
-              value={school}
-              onChange={(e) => setSchool(e.target.value)}
-            />
+        <>
+          <div className="mt-5 flex justify-start">
+            <text
+              style={{
+                color: "#53783B",
+                fontWeight: "bold",
+                fontSize: 28,
+              }}>
+              Education
+            </text>
           </div>
-          <div className="grid grid-flow-row gap-2 ">
-            <FormLabel style={{ color: "#344054" }}>Graduation </FormLabel>
-            <Select
-              size="small"
-              displayEmpty
-              value={graduation}
-              onChange={(e) => setGraduation(e.target.value)}
-              renderValue={(selected) => {
-                if (selected.length === 0) {
-                  return (
-                    <text style={{ color: "#667085" }}>Select Graduation</text>
-                  );
-                }
-                return selected;
-              }}
-              className="w-72">
-              {names.map((name) => (
-                <MenuItem key={name} value={name}>
-                  {name}
-                </MenuItem>
-              ))}
-            </Select>
-          </div>
-        </div>
-        <div className="my-3 grid grid-flow-col justify-between ">
-          <div className="grid grid-flow-row gap-2">
-            <FormLabel style={{ color: "#344054" }}>Field of Study</FormLabel>
-            <TextField
-              size="small"
-              placeholder="Enter Field of Study"
-              className="w-72"
-              value={field}
-              onChange={(e) => setfield(e.target.value)}
-            />
-          </div>
-          <div className="grid grid-flow-row gap-2 ">
-            <FormLabel style={{ color: "#344054" }}>Select Period</FormLabel>
-            <div className="grid grid-flow-col">
+          <div className="mt-3 grid grid-flow-col justify-between ">
+            <div className="grid grid-flow-row gap-2">
+              <FormLabel style={{ color: "#344054" }}>
+                School/University
+              </FormLabel>
               <TextField
                 size="small"
-                className="w-36"
-                type="date"
-                value={educatoinDate.start}
-                onChange={(e) =>
-                  setEduactionDate({ ...educatoinDate, start: e.target.value })
-                }
-              />
-              <TextField
-                size="small"
-                className="w-36"
-                type="date"
-                value={educatoinDate.end}
-                onChange={(e) =>
-                  setEduactionDate({ ...educatoinDate, end: e.target.value })
-                }
+                placeholder="Enter School/University"
+                className="w-72"
+                value={school}
+                onChange={(e) => setSchool(e.target.value)}
               />
             </div>
+            <div className="grid grid-flow-row gap-2 ">
+              <FormLabel style={{ color: "#344054" }}>Graduation </FormLabel>
+              <Select
+                size="small"
+                displayEmpty
+                value={graduation}
+                onChange={(e) => setGraduation(e.target.value)}
+                renderValue={(selected) => {
+                  if (selected.length === 0) {
+                    return (
+                      <text style={{ color: "#667085" }}>
+                        Select Graduation
+                      </text>
+                    );
+                  }
+                  return selected;
+                }}
+                className="w-72">
+                {names.map((name) => (
+                  <MenuItem key={name} value={name}>
+                    {name}
+                  </MenuItem>
+                ))}
+              </Select>
+            </div>
           </div>
-        </div>
+          <div className="my-3 grid grid-flow-col justify-between ">
+            <div className="grid grid-flow-row gap-2">
+              <FormLabel style={{ color: "#344054" }}>Field of Study</FormLabel>
+              <TextField
+                size="small"
+                placeholder="Enter Field of Study"
+                className="w-72"
+                value={field}
+                onChange={(e) => setfield(e.target.value)}
+              />
+            </div>
+            <div className="grid grid-flow-row gap-2 ">
+              <FormLabel style={{ color: "#344054" }}>Select Period</FormLabel>
+              <div className="grid grid-flow-col gap-2">
+                <TextField
+                  size="small"
+                  className="w-36"
+                  type="date"
+                  value={educatoinDate.start}
+                  onChange={(e) =>
+                    setEduactionDate({
+                      ...educatoinDate,
+                      start: e.target.value,
+                    })
+                  }
+                />
+                <TextField
+                  size="small"
+                  className="w-36"
+                  type="date"
+                  value={educatoinDate.end}
+                  onChange={(e) =>
+                    setEduactionDate({ ...educatoinDate, end: e.target.value })
+                  }
+                />
+              </div>
+            </div>
+          </div>
+          <div className="justify-end flex">
+            <div className="w-72 justify-center flex">
+              <Button
+                style={{ color: "white", borderColor: "#7F56D9" }}
+                variant="contained"
+                sx={{
+                  backgroundColor: "#7B964A",
+                  "&:hover": {
+                    backgroundColor: "#7B964A",
+                  },
+                }}>
+                Add Experiance
+              </Button>
+            </div>
+          </div>
+        </>
         <div className="mt-5 justify-end flex">
           <Button
             style={{ color: "white", borderColor: "#7F56D9" }}
