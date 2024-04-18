@@ -7,15 +7,16 @@ import { useState } from "react";
 
 function App() {
   const [user, setUser] = useState("");
-  console.log(user);
+  const [email, setEmail] = useState("");
+
   return (
     <BrowserRouter>
       {user === "" ? (
-        <Auth setUser={setUser} />
+        <Auth setUser={setUser} setEmail={setEmail} />
       ) : user === "admin" ? (
-        <Admin />
+        <Admin setUser={setUser} email={email} />
       ) : (
-        <DashBoard />
+        <DashBoard setUser={setUser} email={email} />
       )}
     </BrowserRouter>
   );

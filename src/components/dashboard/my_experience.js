@@ -1,10 +1,10 @@
 import React from "react";
 import {
   Button,
+  Checkbox,
   FormControlLabel,
   FormLabel,
   MenuItem,
-  Radio,
   Select,
   TextField,
 } from "@mui/material";
@@ -18,7 +18,7 @@ export const My_Experience = ({ next }) => {
   const [location, setLocation] = React.useState("");
   const [date, setDate] = React.useState({ start: "", end: "" });
   const [file, setFile] = React.useState("");
-  const [radioValue, setRadioValue] = React.useState("");
+  const [radioValue, setRadioValue] = React.useState(false);
   const [school, setSchool] = React.useState("");
   const [graduation, setGraduation] = React.useState("");
   const [field, setfield] = React.useState("");
@@ -173,11 +173,11 @@ export const My_Experience = ({ next }) => {
           <div className="border border-app-gray rounded-md  px-3">
             <FormControlLabel
               control={
-                <Radio
+                <Checkbox
                   size="small"
-                  checked={radioValue === "radio"}
-                  value={"radio"}
-                  onChange={(e) => setRadioValue(e.target.value)}
+                  checked={radioValue}
+                  value={radioValue}
+                  onChange={(e) => setRadioValue(e.target.checked)}
                   color="success"
                 />
               }
@@ -298,7 +298,7 @@ export const My_Experience = ({ next }) => {
                     backgroundColor: "#7B964A",
                   },
                 }}>
-                Add Experiance
+                Add Education
               </Button>
             </div>
           </div>

@@ -4,7 +4,7 @@ import logo from "../../assets/images/app-logo.png";
 import loginImage from "../../assets/images/login-app-icon.png";
 import axios from "axios";
 
-const Login = ({ setUser }) => {
+const Login = ({ setUser, setMail }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -30,8 +30,10 @@ const Login = ({ setUser }) => {
 
     if (email === "admin@test.com") {
       setUser("admin");
+      setMail(email);
     } else if (email === "test@test.com") {
       setUser("user");
+      setMail(email);
     } else {
       setUser("");
       alert("No user found");

@@ -5,10 +5,10 @@ import { Home } from "./home";
 import { SideNav } from "../widgets/sidenav";
 import { DashboardTimeSheet } from "./dashboardTimeSheet";
 
-export const DashBoard = () => {
+export const DashBoard = ({ setUser, email }) => {
   return (
     <div className="min-h-screen bg-white">
-      <SideNav />
+      <SideNav setUser={setUser} email={email} />
       <div className="ml-72 border-cyan-500 ">
         <Routes>
           <Route path="/" element={<Home />} />

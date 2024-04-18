@@ -5,10 +5,10 @@ import { TimeSheet } from "./timesheet";
 import { SideNav } from "../widgets/sidenav";
 import { Approval } from "./approval";
 
-export const Admin = () => {
+export const Admin = ({ setUser, email }) => {
   return (
     <div className="min-h-screen bg-white">
-      <SideNav />
+      <SideNav setUser={setUser} email={email} />
       <div className="ml-72">
         <Routes>
           <Route path="/" element={<TimeSheet />} />
