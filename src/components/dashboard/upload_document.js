@@ -31,11 +31,17 @@ export const Upload_Document = ({ next }) => {
     formData.append("proof", proof);
     formData.append("tax", tax);
     formData.append("agreement", agreement);
-    console.log(formData);
+
     try {
-      const response = await axios.post("http://localhost:3000/api/document/", {
+      const response = await axios.post(
+        "http://localhost:3000/api/document/",
         formData,
-      });
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        }
+      );
 
       if (response.status === 200) {
         console.log("user document save successfully");

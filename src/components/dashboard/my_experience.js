@@ -80,6 +80,11 @@ export const My_Experience = ({ next }) => {
         {
           formData,
           experianceData,
+        },
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
         }
       );
 
