@@ -30,6 +30,7 @@ export const My_Education = ({ next }) => {
   let handleChange = (i, e) => {
     let newFormValues = [...educationData];
     newFormValues[i][e.target.name] = e.target.value;
+
     setEducationData(newFormValues);
   };
 
@@ -77,7 +78,10 @@ export const My_Education = ({ next }) => {
           {educationData.map((element, index) => {
             return (
               <>
-                <div className="mt-3 grid grid-flow-col justify-between ">
+                <div
+                  className={`${
+                    index === 1 ? "mt-14" : "mt-6"
+                  } grid grid-flow-col justify-between `}>
                   <div className="grid grid-flow-row gap-2">
                     <FormLabel style={{ color: "#344054" }}>
                       School/University
@@ -159,33 +163,19 @@ export const My_Education = ({ next }) => {
                   </div>
                 </div>
                 <div className="justify-end flex">
-                  <div className="w-72 justify-between grid grid-flow-col">
-                    <Button
-                      style={{ color: "white", borderColor: "#7F56D9" }}
-                      variant="contained"
-                      sx={{
-                        backgroundColor: "#7B964A ",
-                        "&:hover": {
-                          backgroundColor: "#7B964A",
-                        },
-                      }}
-                      disabled={educationData.length === 1}
-                      onClick={() => removeEduFields(index)}>
-                      Remove
-                    </Button>
-                    <Button
-                      style={{ color: "white", borderColor: "#7F56D9" }}
-                      variant="contained"
-                      sx={{
+                  <Button
+                    style={{ color: "white", borderColor: "#7F56D9" }}
+                    variant="contained"
+                    sx={{
+                      backgroundColor: "#7B964A ",
+                      "&:hover": {
                         backgroundColor: "#7B964A",
-                        "&:hover": {
-                          backgroundColor: "#7B964A",
-                        },
-                      }}
-                      onClick={() => addEduFields()}>
-                      Add Education
-                    </Button>
-                  </div>
+                      },
+                    }}
+                    disabled={educationData.length === 1}
+                    onClick={() => removeEduFields(index)}>
+                    Remove
+                  </Button>
                 </div>
               </>
             );
@@ -196,6 +186,19 @@ export const My_Education = ({ next }) => {
             style={{ color: "white", borderColor: "#7F56D9" }}
             variant="contained"
             sx={{
+              backgroundColor: "#7B964A",
+              "&:hover": {
+                backgroundColor: "#7B964A",
+              },
+            }}
+            onClick={() => addEduFields()}>
+            Add Education
+          </Button>
+          <Button
+            style={{ color: "white", borderColor: "#7F56D9" }}
+            variant="contained"
+            sx={{
+              marginLeft: 5,
               backgroundColor: "#7B964A",
               "&:hover": {
                 backgroundColor: "#7B964A",

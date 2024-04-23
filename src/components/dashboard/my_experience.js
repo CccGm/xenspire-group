@@ -132,126 +132,133 @@ export const My_Experience = ({ next }) => {
             </Button>
           </div>
         </div>
-        {experianceData.map((element, index) => {
-          return (
-            <>
-              <div className="mt-5 grid grid-flow-col justify-between ">
-                <div className="grid grid-flow-row gap-2">
-                  <FormLabel style={{ color: "#344054" }}>Job Title</FormLabel>
-                  <TextField
-                    name="title"
-                    size="small"
-                    placeholder="Enter Title"
-                    className="w-72"
-                    value={element.title}
-                    onChange={(e) => handleChange(index, e)}
-                  />
-                </div>
-                <div className="grid grid-flow-row gap-2 ">
-                  <FormLabel style={{ color: "#344054" }}>
-                    Company Name
-                  </FormLabel>
-                  <TextField
-                    name="companyName"
-                    size="small"
-                    placeholder="Enter Company"
-                    className="w-72"
-                    value={element.companyName}
-                    onChange={(e) => handleChange(index, e)}
-                  />
-                </div>
-              </div>
-              <div className="mt-3 grid grid-flow-col justify-between ">
-                <div className="grid grid-flow-row gap-2 ">
-                  <FormLabel style={{ color: "#344054" }}>
-                    Select Period
-                  </FormLabel>
-                  <div className="grid grid-flow-col gap-2">
+        <div>
+          {experianceData.map((element, index) => {
+            return (
+              <>
+                <div
+                  className={`${
+                    index === 1 ? "mt-14" : "mt-6"
+                  } grid grid-flow-col justify-between `}>
+                  <div className="grid grid-flow-row gap-2">
+                    <FormLabel style={{ color: "#344054" }}>
+                      Job Title
+                    </FormLabel>
                     <TextField
-                      name="startDate"
+                      name="title"
                       size="small"
-                      className="w-36"
-                      type="date"
-                      value={element.startDate}
+                      placeholder="Enter Title"
+                      className="w-72"
+                      value={element.title}
                       onChange={(e) => handleChange(index, e)}
                     />
+                  </div>
+                  <div className="grid grid-flow-row gap-2 ">
+                    <FormLabel style={{ color: "#344054" }}>
+                      Company Name
+                    </FormLabel>
                     <TextField
-                      name="endDate"
+                      name="companyName"
                       size="small"
-                      className="w-36"
-                      type="date"
-                      value={element.endDate}
-                      disabled={element.radioValue ? true : false}
+                      placeholder="Enter Company"
+                      className="w-72"
+                      value={element.companyName}
                       onChange={(e) => handleChange(index, e)}
                     />
                   </div>
                 </div>
-                <div className="grid grid-flow-row gap-2">
-                  <FormLabel style={{ color: "#344054" }}>Location</FormLabel>
-                  <TextField
-                    name="location"
-                    size="small"
-                    placeholder="Enter Location"
-                    className="w-72"
-                    value={element.location}
-                    onChange={(e) => handleChange(index, e)}
-                  />
-                </div>
-              </div>
-              <div className="mt-3 grid grid-flow-col justify-between ">
-                <div className="border border-app-gray rounded-md  px-3">
-                  <FormControlLabel
-                    control={
-                      <Checkbox
-                        name="radioValue"
+                <div className="mt-3 grid grid-flow-col justify-between ">
+                  <div className="grid grid-flow-row gap-2 ">
+                    <FormLabel style={{ color: "#344054" }}>
+                      Select Period
+                    </FormLabel>
+                    <div className="grid grid-flow-col gap-2">
+                      <TextField
+                        name="startDate"
                         size="small"
-                        checked={element.radioValue}
-                        value={element.radioValue}
-                        onChange={(e) => handleRadioChange(index, e)}
-                        color="success"
+                        className="w-36"
+                        type="date"
+                        value={element.startDate}
+                        onChange={(e) => handleChange(index, e)}
                       />
-                    }
-                    label="This is my Current company"
-                  />
+                      <TextField
+                        name="endDate"
+                        size="small"
+                        className="w-36"
+                        type="date"
+                        value={element.endDate}
+                        disabled={element.radioValue ? true : false}
+                        onChange={(e) => handleChange(index, e)}
+                      />
+                    </div>
+                  </div>
+                  <div className="grid grid-flow-row gap-2">
+                    <FormLabel style={{ color: "#344054" }}>Location</FormLabel>
+                    <TextField
+                      name="location"
+                      size="small"
+                      placeholder="Enter Location"
+                      className="w-72"
+                      value={element.location}
+                      onChange={(e) => handleChange(index, e)}
+                    />
+                  </div>
                 </div>
+                <div className="mt-3 grid grid-flow-col justify-between ">
+                  <div className="border border-app-gray rounded-md  px-3">
+                    <FormControlLabel
+                      control={
+                        <Checkbox
+                          name="radioValue"
+                          size="small"
+                          checked={element.radioValue}
+                          value={element.radioValue}
+                          onChange={(e) => handleRadioChange(index, e)}
+                          color="success"
+                        />
+                      }
+                      label="This is my Current company"
+                    />
+                  </div>
 
-                <div className="w-72 justify-between grid grid-flow-col">
-                  <Button
-                    style={{ color: "white", borderColor: "#7F56D9" }}
-                    variant="contained"
-                    sx={{
-                      backgroundColor: "#7B964A ",
-                      "&:hover": {
-                        backgroundColor: "#7B964A",
-                      },
-                    }}
-                    disabled={experianceData.length === 1}
-                    onClick={() => removeExpFields(index)}>
-                    Remove
-                  </Button>
-                  <Button
-                    style={{ color: "white", borderColor: "#7F56D9" }}
-                    variant="contained"
-                    sx={{
-                      backgroundColor: "#7B964A",
-                      "&:hover": {
-                        backgroundColor: "#7B964A",
-                      },
-                    }}
-                    onClick={() => addEepFields()}>
-                    Add Education
-                  </Button>
+                  <div className="flex justify-center">
+                    <Button
+                      style={{ color: "white", borderColor: "#7F56D9" }}
+                      variant="contained"
+                      sx={{
+                        backgroundColor: "#7B964A ",
+                        "&:hover": {
+                          backgroundColor: "#7B964A",
+                        },
+                      }}
+                      disabled={experianceData.length === 1}
+                      onClick={() => removeExpFields(index)}>
+                      Remove
+                    </Button>
+                  </div>
                 </div>
-              </div>
-            </>
-          );
-        })}
-
-        <div className="mt-5 justify-end flex">
+              </>
+            );
+          })}
+        </div>
+        <div className="mt-8 justify-end flex">
           <Button
             style={{ color: "white", borderColor: "#7F56D9" }}
             variant="contained"
             sx={{
+              backgroundColor: "#7B964A",
+              "&:hover": {
+                backgroundColor: "#7B964A",
+              },
+            }}
+            onClick={() => addEepFields()}>
+            Add Education
+          </Button>
+          <Button
+            style={{ color: "white", borderColor: "#7F56D9" }}
+            variant="contained"
+            sx={{
+              marginLeft: 5,
               backgroundColor: "#7B964A",
               "&:hover": {
                 backgroundColor: "#7B964A",
