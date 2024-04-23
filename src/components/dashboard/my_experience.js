@@ -73,7 +73,7 @@ export const My_Experience = ({ next }) => {
 
     const formData = new FormData();
     formData.append("file", file);
-    console.log(file);
+
     try {
       const response = await axios.post(
         "http://localhost:3000/api/experiance/",
