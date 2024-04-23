@@ -78,10 +78,7 @@ export const My_Education = ({ next }) => {
           {educationData.map((element, index) => {
             return (
               <>
-                <div
-                  className={`${
-                    index === 1 ? "mt-14" : "mt-6"
-                  } grid grid-flow-col justify-between `}>
+                <div className="mt-14 grid grid-flow-col justify-between ">
                   <div className="grid grid-flow-row gap-2">
                     <FormLabel style={{ color: "#344054" }}>
                       School/University
