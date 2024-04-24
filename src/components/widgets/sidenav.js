@@ -1,5 +1,12 @@
 import React from "react";
-import { IconButton, InputAdornment, TextField } from "@mui/material";
+import {
+  IconButton,
+  InputAdornment,
+  ListItemButton,
+  ListItemIcon,
+  ListItemText,
+  TextField,
+} from "@mui/material";
 import { LogoutOutlined, Search } from "@mui/icons-material";
 import Accordion from "@mui/material/Accordion";
 import AccordionSummary from "@mui/material/AccordionSummary";
@@ -10,10 +17,7 @@ import logo from "../../assets/images/app-logo.png";
 import avtar from "../../assets/images/Avatar.png";
 import home from "../../assets/images/home-icon.png";
 import profile from "../../assets/images/profile-icon.png";
-import setting from "../../assets/images/setting-icon.png";
-import dash from "../../assets/images/dashboard-icon.png";
 import time from "../../assets/images/timesheets-icon.png";
-import doc from "../../assets/images/document-icon.png";
 import { useNavigate } from "react-router-dom";
 
 export const SideNav = ({ setUser, email }) => {
@@ -25,11 +29,13 @@ export const SideNav = ({ setUser, email }) => {
   };
   const name = [
     { name: "Home", icon: home, path: "/home" },
-    { name: "Profile", icon: profile, path: "/profile" },
-    { name: "Documents", icon: doc, path: "/" },
-    { name: "Dashboards", icon: dash, path: "/dashboard" },
-    { name: "Timesheets", icon: time, path: "/" },
-    { name: "Settings", icon: setting, path: "/" },
+    { name: "Timesheets", icon: time, path: "/dashboard" },
+  ];
+  const profile_name = [
+    { name: "Documents", path: "/" },
+    { name: "Benifits", path: "/" },
+    { name: "Payroll", path: "/" },
+    { name: "Profile Details", path: "/profile" },
   ];
 
   return (
@@ -38,241 +44,56 @@ export const SideNav = ({ setUser, email }) => {
         <img src={logo} alt="logo" className="w-fit px-10" />
       </div>
       <div>
-        <div className="m-2 rounded-md  bg-app-lightGreen ">
-          <TextField
-            size="small"
-            fullWidth
-            placeholder="search"
-            style={{ color: "white" }}
-            InputProps={{
-              startAdornment: (
-                <InputAdornment position="start">
-                  <Search sx={{ color: "#E9D7FE" }} />
-                </InputAdornment>
-              ),
-            }}
-            sx={{ input: { color: "#E9D7FE" }, borderColor: "#7B964A" }}
-          />
-        </div>
-
         <div className="mx-2">
-          <Accordion
-            expanded={expanded === "Home"}
-            onChange={handleChange("Home")}
-            sx={{ backgroundColor: "#CEEAB0", mt: 2 }}>
-            <AccordionSummary
-              expandIcon={<ExpandMoreIcon />}
-              aria-controls="panel1bh-content"
-              id="panel1bh-header">
-              <Typography sx={{ width: "18%", flexShrink: 0 }}>
-                <img src={name[0].icon} alt="icon" className="w-5" />
-              </Typography>
-              <Typography sx={{ color: "text.secondary" }}>
-                {name[0].name}
-              </Typography>
-            </AccordionSummary>
-            <AccordionDetails>
-              {name.map((data, index) => {
-                return (
-                  <div
-                    key={index}
-                    className="bg-app-green my-2 p-2 rounded-md"
-                    onClick={() => navigation(data.path)}>
-                    <div className="grid-flow-col grid justify-start">
-                      <img src={data.icon} alt="icon" className="w-5" />
-                      <text
-                        style={{
-                          color: "white",
-                          fontSize: 14,
-                          marginLeft: 10,
-                        }}>
-                        {data.name}
-                      </text>
-                    </div>
-                  </div>
-                );
-              })}
-            </AccordionDetails>
-          </Accordion>
-          <Accordion
-            expanded={expanded === "Profile"}
-            onChange={handleChange("Profile")}
-            sx={{ backgroundColor: "#CEEAB0", mt: 2 }}>
-            <AccordionSummary
-              expandIcon={<ExpandMoreIcon />}
-              aria-controls="panel1bh-content"
-              id="panel1bh-header">
-              <Typography sx={{ width: "18%", flexShrink: 0 }}>
-                <img src={name[1].icon} alt="icon" className="w-5" />
-              </Typography>
-              <Typography sx={{ color: "text.secondary" }}>
-                {name[1].name}
-              </Typography>
-            </AccordionSummary>
-            <AccordionDetails>
-              {name.map((data, index) => {
-                return (
-                  <div
-                    key={index}
-                    className="bg-app-green my-2 p-2 rounded-md"
-                    onClick={() => navigation(data.path)}>
-                    <div className="grid-flow-col grid justify-start">
-                      <img src={data.icon} alt="icon" className="w-5" />
-                      <text
-                        style={{
-                          color: "white",
-                          fontSize: 14,
-                          marginLeft: 10,
-                        }}>
-                        {data.name}
-                      </text>
-                    </div>
-                  </div>
-                );
-              })}
-            </AccordionDetails>
-          </Accordion>
-          <Accordion
-            expanded={expanded === "Documents"}
-            onChange={handleChange("Documents")}
-            sx={{ backgroundColor: "#CEEAB0", mt: 2 }}>
-            <AccordionSummary
-              expandIcon={<ExpandMoreIcon />}
-              aria-controls="panel1bh-content"
-              id="panel1bh-header">
-              <Typography sx={{ width: "18%", flexShrink: 0 }}>
-                <img src={name[2].icon} alt="icon" className="w-5" />
-              </Typography>
-              <Typography sx={{ color: "text.secondary" }}>
-                {name[2].name}
-              </Typography>
-            </AccordionSummary>
-            <AccordionDetails>
-              {name.map((data, index) => {
-                return (
-                  <div
-                    key={index}
-                    className="bg-app-green my-2 p-2 rounded-md"
-                    onClick={() => navigation(data.path)}>
-                    <div className="grid-flow-col grid justify-start">
-                      <img src={data.icon} alt="icon" className="w-5" />
-                      <text
-                        style={{
-                          color: "white",
-                          fontSize: 14,
-                          marginLeft: 10,
-                        }}>
-                        {data.name}
-                      </text>
-                    </div>
-                  </div>
-                );
-              })}
-            </AccordionDetails>
-          </Accordion>
-          <Accordion
-            expanded={expanded === "Dashboards"}
-            onChange={handleChange("Dashboards")}
-            sx={{ backgroundColor: "#CEEAB0", mt: 2 }}>
-            <AccordionSummary
-              expandIcon={<ExpandMoreIcon />}
-              aria-controls="panel1bh-content"
-              id="panel1bh-header">
-              <Typography sx={{ width: "18%", flexShrink: 0 }}>
-                <img src={name[3].icon} alt="icon" className="w-5" />
-              </Typography>
-              <Typography sx={{ color: "text.secondary" }}>
-                {name[3].name}
-              </Typography>
-            </AccordionSummary>
-            <AccordionDetails>
-              {name.map((data, index) => {
-                return (
-                  <div
-                    key={index}
-                    className="bg-app-green my-2 p-2 rounded-md"
-                    onClick={() => navigation(data.path)}>
-                    <div className="grid-flow-col grid justify-start">
-                      <img src={data.icon} alt="icon" className="w-5" />
-                      <text
-                        style={{
-                          color: "white",
-                          fontSize: 14,
-                          marginLeft: 10,
-                        }}>
-                        {data.name}
-                      </text>
-                    </div>
-                  </div>
-                );
-              })}
-            </AccordionDetails>
-          </Accordion>
-          <Accordion
-            expanded={expanded === "Timesheets"}
-            onChange={handleChange("Timesheets")}
-            sx={{ backgroundColor: "#CEEAB0", mt: 2 }}>
-            <AccordionSummary
-              expandIcon={<ExpandMoreIcon />}
-              aria-controls="panel1bh-content"
-              id="panel1bh-header">
-              <Typography sx={{ width: "18%", flexShrink: 0 }}>
-                <img src={name[4].icon} alt="icon" className="w-5" />
-              </Typography>
-              <Typography sx={{ color: "text.secondary" }}>
-                {name[4].name}
-              </Typography>
-            </AccordionSummary>
-            <AccordionDetails>
-              {name.map((data, index) => {
-                return (
-                  <div
-                    key={index}
-                    className="bg-app-green my-2 p-2 rounded-md"
-                    onClick={() => navigation(data.path)}>
-                    <div className="grid-flow-col grid justify-start">
-                      <img src={data.icon} alt="icon" className="w-5" />
-                      <text
-                        style={{
-                          color: "white",
-                          fontSize: 14,
-                          marginLeft: 10,
-                        }}>
-                        {data.name}
-                      </text>
-                    </div>
-                  </div>
-                );
-              })}
-            </AccordionDetails>
-          </Accordion>
+          {name.map((data, index) => (
+            <ListItemButton
+              key={index}
+              sx={{
+                justifyContent: "center",
+                px: 2.5,
+                backgroundColor: "#53783B",
+                margin: 1,
+                borderRadius: 2,
+              }}
+              onClick={() => navigation(data.path)}>
+              <ListItemIcon
+                sx={{
+                  minWidth: 0,
+                  mr: "auto",
+                  justifyContent: "center",
+                }}>
+                <img src={data.icon} alt="logo" />
+              </ListItemIcon>
+              <ListItemText
+                primary={data.name}
+                sx={{ ml: 1, color: "#ffffff" }}
+              />
+            </ListItemButton>
+          ))}
           <Accordion
             expanded={expanded === "Settings"}
             onChange={handleChange("Settings")}
-            sx={{ backgroundColor: "#CEEAB0", mt: 2 }}>
+            sx={{ backgroundColor: "#53783B", mt: 2, mx: 1 }}>
             <AccordionSummary
               expandIcon={<ExpandMoreIcon />}
               aria-controls="panel1bh-content"
               id="panel1bh-header">
               <Typography sx={{ width: "18%", flexShrink: 0 }}>
-                <img src={name[5].icon} alt="icon" className="w-5" />
+                <img src={profile} alt="icon" className="w-5" />
               </Typography>
-              <Typography sx={{ color: "text.secondary" }}>
-                {name[5].name}
-              </Typography>
+              <Typography sx={{ color: "black" }}>Profile</Typography>
             </AccordionSummary>
             <AccordionDetails>
-              {name.map((data, index) => {
+              {profile_name.map((data, index) => {
                 return (
                   <div
                     key={index}
-                    className="bg-app-green my-2 p-2 rounded-md"
+                    className="bg-app-llgreen my-2 p-2 rounded-md"
                     onClick={() => navigation(data.path)}>
                     <div className="grid-flow-col grid justify-start">
-                      <img src={data.icon} alt="icon" className="w-5" />
                       <text
                         style={{
-                          color: "white",
+                          color: "black",
                           fontSize: 14,
                           marginLeft: 10,
                         }}>
