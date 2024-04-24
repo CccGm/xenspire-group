@@ -13,7 +13,7 @@ import { styled } from "@mui/material/styles";
 import avtar from "../../assets/images/Avatar.png";
 
 export const Profile = () => {
-  const [editProfile, setEditProfile] = React.useState(false);
+  const [editProfile, setEditProfile] = React.useState(true);
   const [image, setImage] = React.useState("");
 
   const [profile, setProfile] = React.useState({
@@ -81,7 +81,7 @@ export const Profile = () => {
   const yes_no = ["Yes", "No"];
 
   return (
-    <div>
+    <div className="w-full">
       <div className="px-56 pt-20 grid grid-flow-col  items-center">
         <div className="rounded-full w-40 h-40 bg-app-gray justify-center items-center">
           {image ? (

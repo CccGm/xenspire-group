@@ -87,7 +87,7 @@ export const DashboardTimeSheet = () => {
   };
 
   return (
-    <div className="mx-32 pt-10 pb-20">
+    <div className="mx-32 pt-10 pb-20 w-full">
       <div className="flex justify-center">
         <text
           style={{

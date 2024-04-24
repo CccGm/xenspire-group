@@ -106,7 +106,7 @@ export function Home() {
   }
 
   return (
-    <div className="pb-20">
+    <div className="pb-20 w-full">
       <div className="py-10">
         <Stepper
           activeStep={activeStep}

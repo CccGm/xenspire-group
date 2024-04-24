@@ -9,8 +9,8 @@ import { Profile } from "./profile";
 export const DashBoard = ({ setUser, email }) => {
   return (
     <div className="min-h-screen bg-white">
-      <SideNav setUser={setUser} email={email} />
-      <div className="ml-72 border-cyan-500 ">
+      <div className="flex">
+        <SideNav setUser={setUser} email={email} />
         <Routes>
           <Route path="/" element={<Navigate to="home" replace />} />
           <Route path="home" element={<Home />} />
