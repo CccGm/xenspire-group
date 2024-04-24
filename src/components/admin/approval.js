@@ -9,8 +9,10 @@ import {
 } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import { Dummy_Approval, get_Data } from "../utils/dummy";
+import { useNavigate } from "react-router-dom";
 
 export const Approval = () => {
+  const navigation = useNavigate();
   React.useState(() => {
     get_Data();
   }, []);
@@ -57,15 +59,21 @@ export const Approval = () => {
         <Table aria-label="customized table" stickyHeader>
           <StyledTableHead>
             <TableRow>
-              <TableCell style={{ fontWeight: "bold", color: "#ffffff" }}>
+              <TableCell
+                align="center"
+                style={{ fontWeight: "bold", color: "#ffffff" }}>
                 Name
               </TableCell>
               <TableCell
                 align="center"
                 style={{ fontWeight: "bold", color: "#ffffff" }}>
-                Date
+                Start Date
               </TableCell>
-
+              <TableCell
+                align="center"
+                style={{ fontWeight: "bold", color: "#ffffff" }}>
+                End Date
+              </TableCell>
               <TableCell
                 align="center"
                 style={{ fontWeight: "bold", color: "#ffffff" }}>
@@ -75,14 +83,14 @@ export const Approval = () => {
           </StyledTableHead>
           <TableBody>
             {Dummy_Approval.map((row) => (
-              <StyledTableRow key={row.name}>
-                <TableCell component="th" scope="row">
-                  {row.timesheetName}
-                </TableCell>
-                <TableCell align="center">
-                  {row.startDate} to {row.endDate}
-                </TableCell>
-
+              <StyledTableRow
+                key={row.name}
+                onClick={() => {
+                  navigation("/pendingApproval");
+                }}>
+                <TableCell align="center">{row.timesheetName}</TableCell>
+                <TableCell align="center">{row.startDate}</TableCell>
+                <TableCell align="center">{row.endDate}</TableCell>
                 <TableCell
                   align="center"
                   sx={{

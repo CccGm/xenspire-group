@@ -87,7 +87,7 @@ export const SideNavAdmin = ({ setUser, email }) => {
   const drawer_Data_new = [
     { name: "Home", icon: home, path: "/home" },
     { name: "Profile", icon: profile, path: "/profile" },
-    { name: "Timesheets", icon: time, path: "/timesheet" },
+    { name: "Timesheets", icon: time, path: "/approval" },
   ];
 
   React.useEffect(() => {
@@ -100,7 +100,6 @@ export const SideNavAdmin = ({ setUser, email }) => {
 
   const name = [
     { name: "Apporve", path: "/approval" },
-    { name: "Pending", path: "/pendingApproval" },
     { name: "Create", path: "/create" },
   ];
 

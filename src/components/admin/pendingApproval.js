@@ -21,6 +21,7 @@ import { Dummy_Approval, Dummy_Pending } from "../utils/dummy";
 
 export const PendingApproval = () => {
   const [data, setData] = React.useState(Dummy_Pending);
+  const [searchData, setSearchData] = React.useState([]);
   const [selected, setSelected] = React.useState([]);
   const [name, setName] = React.useState("");
   const [search, setSearch] = React.useState("");
@@ -37,7 +38,9 @@ export const PendingApproval = () => {
       border: 0,
     },
   }));
+
   const isSelected = (id) => selected.indexOf(id) !== -1;
+
   const handleClick = (event, id) => {
     const selectedIndex = selected.indexOf(id);
     let newSelected = [];
@@ -57,6 +60,8 @@ export const PendingApproval = () => {
     setSelected(newSelected);
   };
 
+  const statusSelect = ["approved", "reject"];
+
   const StyledTableHead = styled(TableHead)`
     & .MuiTableCell-root {
       background-color: #53783b;
@@ -68,6 +73,21 @@ export const PendingApproval = () => {
     border-top-right-radius: 0.3rem;
     max-height: 400px;
   `;
+
+  const statusChagehandler = (e, index) => {
+    const newData = [...data];
+    newData[index].status = e;
+    setData(newData);
+  };
+
+  const searchHandle = () => {
+    const newData = data.find((d) => d.timesheetName === search);
+    setSearchData(newData ? [newData] : data);
+  };
+
+  React.useEffect(() => {
+    searchHandle();
+  }, [search]);
 
   return (
     <div className="mx-20 pt-10 pb-20 w-full">
@@ -148,12 +168,11 @@ export const PendingApproval = () => {
                 </TableRow>
               </StyledTableHead>
               <TableBody>
-                {data.map((row, index) => (
-                  <StyledTableRow
-                    key={index}
-                    onClick={(event) => handleClick(event, index)}
-                    role="checkbox">
-                    <TableCell padding="checkbox">
+                {searchData.map((row, index) => (
+                  <StyledTableRow key={index} role="checkbox">
+                    <TableCell
+                      padding="checkbox"
+                      onClick={(event) => handleClick(event, index)}>
                       <Checkbox color="primary" checked={isSelected(index)} />
                     </TableCell>
                     <TableCell component="th" scope="row">
@@ -161,14 +180,22 @@ export const PendingApproval = () => {
                     </TableCell>
                     <TableCell align="center">{row.date}</TableCell>
                     <TableCell align="center">{row.workingHours}</TableCell>
-
-                    <TableCell
-                      align="center"
-                      sx={{
-                        backgroundColor:
-                          row.status === "Pending" ? "#FFFFFF" : "#F9FAFB",
-                      }}>
-                      {row.status}
+                    <TableCell align="center">
+                      <Autocomplete
+                        freeSolo
+                        size="small"
+                        options={statusSelect.map((option) => option)}
+                        value={row.status}
+                        onChange={(event, newValue) => {
+                          statusChagehandler(newValue, index);
+                        }}
+                        renderInput={(params) => (
+                          <TextField
+                            {...params}
+                            placeholder="Select Approval"
+                          />
+                        )}
+                      />
                     </TableCell>
                   </StyledTableRow>
                 ))}
