@@ -12,7 +12,8 @@ export const DashBoard = ({ setUser, email }) => {
       <SideNav setUser={setUser} email={email} />
       <div className="ml-72 border-cyan-500 ">
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={<Navigate to="home" replace />} />
+          <Route path="home" element={<Home />} />
           <Route path="dashboard" element={<DashboardTimeSheet />} />
           <Route path="profile" element={<Profile />} />
           <Route path="*" element={<Navigate to="/" replace />} />

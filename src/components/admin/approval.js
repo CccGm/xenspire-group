@@ -17,7 +17,7 @@ import { DummyData, get_Data } from "../utils/dummy";
 
 export const Approval = () => {
   const [name, setName] = React.useState("");
-  const [search, setSearch] = React.useState("hii");
+  const [search, setSearch] = React.useState("");
   const names = [
     "Oliver Hansen",
     "Van Henry",

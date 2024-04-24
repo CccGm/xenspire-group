@@ -14,20 +14,22 @@ import setting from "../../assets/images/setting-icon.png";
 import dash from "../../assets/images/dashboard-icon.png";
 import time from "../../assets/images/timesheets-icon.png";
 import doc from "../../assets/images/document-icon.png";
+import { useNavigate } from "react-router-dom";
 
 export const SideNav = ({ setUser, email }) => {
   const [expanded, setExpanded] = React.useState(false);
+  const navigation = useNavigate();
 
   const handleChange = (panel) => (event, isExpanded) => {
     setExpanded(isExpanded ? panel : false);
   };
   const name = [
-    { name: "Home", icon: home },
-    { name: "Profile", icon: profile },
-    { name: "Documents", icon: doc },
-    { name: "Dashboards", icon: dash },
-    { name: "Timesheets", icon: time },
-    { name: "Settings", icon: setting },
+    { name: "Home", icon: home, path: "/home" },
+    { name: "Profile", icon: profile, path: "/profile" },
+    { name: "Documents", icon: doc, path: "/" },
+    { name: "Dashboards", icon: dash, path: "/dashboard" },
+    { name: "Timesheets", icon: time, path: "/" },
+    { name: "Settings", icon: setting, path: "/" },
   ];
 
   return (
@@ -72,7 +74,10 @@ export const SideNav = ({ setUser, email }) => {
             <AccordionDetails>
               {name.map((data, index) => {
                 return (
-                  <div key={index} className="bg-app-green my-2 p-2 rounded-md">
+                  <div
+                    key={index}
+                    className="bg-app-green my-2 p-2 rounded-md"
+                    onClick={() => navigation(data.path)}>
                     <div className="grid-flow-col grid justify-start">
                       <img src={data.icon} alt="icon" className="w-5" />
                       <text
@@ -107,7 +112,10 @@ export const SideNav = ({ setUser, email }) => {
             <AccordionDetails>
               {name.map((data, index) => {
                 return (
-                  <div key={index} className="bg-app-green my-2 p-2 rounded-md">
+                  <div
+                    key={index}
+                    className="bg-app-green my-2 p-2 rounded-md"
+                    onClick={() => navigation(data.path)}>
                     <div className="grid-flow-col grid justify-start">
                       <img src={data.icon} alt="icon" className="w-5" />
                       <text
@@ -142,7 +150,10 @@ export const SideNav = ({ setUser, email }) => {
             <AccordionDetails>
               {name.map((data, index) => {
                 return (
-                  <div key={index} className="bg-app-green my-2 p-2 rounded-md">
+                  <div
+                    key={index}
+                    className="bg-app-green my-2 p-2 rounded-md"
+                    onClick={() => navigation(data.path)}>
                     <div className="grid-flow-col grid justify-start">
                       <img src={data.icon} alt="icon" className="w-5" />
                       <text
@@ -177,7 +188,10 @@ export const SideNav = ({ setUser, email }) => {
             <AccordionDetails>
               {name.map((data, index) => {
                 return (
-                  <div key={index} className="bg-app-green my-2 p-2 rounded-md">
+                  <div
+                    key={index}
+                    className="bg-app-green my-2 p-2 rounded-md"
+                    onClick={() => navigation(data.path)}>
                     <div className="grid-flow-col grid justify-start">
                       <img src={data.icon} alt="icon" className="w-5" />
                       <text
@@ -212,7 +226,10 @@ export const SideNav = ({ setUser, email }) => {
             <AccordionDetails>
               {name.map((data, index) => {
                 return (
-                  <div key={index} className="bg-app-green my-2 p-2 rounded-md">
+                  <div
+                    key={index}
+                    className="bg-app-green my-2 p-2 rounded-md"
+                    onClick={() => navigation(data.path)}>
                     <div className="grid-flow-col grid justify-start">
                       <img src={data.icon} alt="icon" className="w-5" />
                       <text
@@ -247,7 +264,10 @@ export const SideNav = ({ setUser, email }) => {
             <AccordionDetails>
               {name.map((data, index) => {
                 return (
-                  <div key={index} className="bg-app-green my-2 p-2 rounded-md">
+                  <div
+                    key={index}
+                    className="bg-app-green my-2 p-2 rounded-md"
+                    onClick={() => navigation(data.path)}>
                     <div className="grid-flow-col grid justify-start">
                       <img src={data.icon} alt="icon" className="w-5" />
                       <text
