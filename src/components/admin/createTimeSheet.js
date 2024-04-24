@@ -33,7 +33,7 @@ export const CreateTimeSheet = ({ add_Data }) => {
   };
 
   return (
-    <div>
+    <div className="mx-32 pt-10 pb-20 w-full">
       <form className="mt-16 mx-14" onSubmit={handleClick}>
         <div className="grid grid-flow-col justify-between items-center">
           <FormLabel style={{ color: "#344054" }}>Name</FormLabel>

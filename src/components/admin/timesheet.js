@@ -8,15 +8,13 @@ import {
   TableRow,
 } from "@mui/material";
 import { styled } from "@mui/material/styles";
+import axios from "axios";
 import { CreateTimeSheet } from "./createTimeSheet";
 import { DummyData, get_Data } from "../utils/dummy";
-import axios from "axios";
-import { useNavigate } from "react-router-dom";
 
 export const TimeSheet = () => {
   const [create, setCreate] = React.useState(false);
   const [array, serArray] = React.useState(DummyData);
-  const navigation = useNavigate();
 
   const StyledTableRow = styled(TableRow)(({ theme }) => ({
     "&:nth-of-type(odd)": {
@@ -83,35 +81,6 @@ export const TimeSheet = () => {
       ) : (
         <>
           <div className="my-3 justify-end flex">
-            <Button
-              style={{ color: "white", borderColor: "#7F56D9" }}
-              variant="contained"
-              sx={{
-                backgroundColor: "#53783B",
-                "&:hover": {
-                  backgroundColor: "#53783B",
-                },
-                textTransform: "none",
-              }}
-              onClick={() => navigation("/approval")}>
-              Go to Approval
-            </Button>
-
-            <Button
-              style={{ color: "white", borderColor: "#7F56D9" }}
-              variant="contained"
-              sx={{
-                backgroundColor: "#53783B",
-                "&:hover": {
-                  backgroundColor: "#53783B",
-                },
-                textTransform: "none",
-                marginLeft: 5,
-              }}
-              onClick={() => navigation("/home")}>
-              Home
-            </Button>
-
             <Button
               style={{ color: "white", borderColor: "#7F56D9" }}
               variant="contained"

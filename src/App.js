@@ -4,6 +4,7 @@ import { Auth } from "./components/auth";
 import { DashBoard } from "./components/dashboard";
 import { Admin } from "./components/admin";
 import { useState } from "react";
+import { ContextProvider } from "./components/context";
 
 function App() {
   const [user, setUser] = useState("");
@@ -11,13 +12,15 @@ function App() {
 
   return (
     <BrowserRouter>
-      {user === "" ? (
-        <Auth setUser={setUser} setEmail={setEmail} />
-      ) : user === "admin" ? (
-        <Admin setUser={setUser} email={email} />
-      ) : (
-        <DashBoard setUser={setUser} email={email} />
-      )}
+      <ContextProvider>
+        {user === "" ? (
+          <Auth setUser={setUser} setEmail={setEmail} />
+        ) : user === "admin" ? (
+          <Admin setUser={setUser} email={email} />
+        ) : (
+          <DashBoard setUser={setUser} email={email} />
+        )}
+      </ContextProvider>
     </BrowserRouter>
   );
 }

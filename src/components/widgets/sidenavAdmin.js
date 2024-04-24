@@ -24,8 +24,10 @@ import home from "../../assets/images/home-icon.png";
 import profile from "../../assets/images/profile-icon.png";
 import time from "../../assets/images/timesheets-icon.png";
 import avtar from "../../assets/images/Avatar.png";
+import { useNavigate } from "react-router-dom";
 
 export const SideNavAdmin = ({ setUser, email }) => {
+  const navigation = useNavigate();
   const [open, setOpen] = React.useState(false);
   const [expanded, setExpanded] = React.useState(false);
   const [data, setData] = React.useState([]);
@@ -85,14 +87,14 @@ export const SideNavAdmin = ({ setUser, email }) => {
   }));
 
   const drawer_Data = [
-    { name: "Home", icon: home },
-    { name: "Profile", icon: profile },
+    { name: "Home", icon: home, path: "/home" },
+    { name: "Profile", icon: profile, path: "/profile" },
   ];
 
   const drawer_Data_new = [
-    { name: "Home", icon: home },
-    { name: "Profile", icon: profile },
-    { name: "Timesheets", icon: time },
+    { name: "Home", icon: home, path: "/home" },
+    { name: "Profile", icon: profile, path: "/profile" },
+    { name: "Timesheets", icon: time, path: "/timesheet" },
   ];
 
   React.useEffect(() => {
@@ -103,7 +105,10 @@ export const SideNavAdmin = ({ setUser, email }) => {
     }
   }, [open]);
 
-  const name = [{ name: "Apporve" }, { name: "Create" }];
+  const name = [
+    { name: "Apporve", path: "/approval" },
+    { name: "Create", path: "/create" },
+  ];
 
   const handleDrawer = () => {
     setOpen(!open);
@@ -149,7 +154,8 @@ export const SideNavAdmin = ({ setUser, email }) => {
                   backgroundColor: "#53783B",
                   margin: 1,
                   borderRadius: 2,
-                }}>
+                }}
+                onClick={() => navigation(data.path)}>
                 <ListItemIcon
                   sx={{
                     minWidth: 0,
@@ -192,7 +198,8 @@ export const SideNavAdmin = ({ setUser, email }) => {
                     return (
                       <div
                         key={index}
-                        className="bg-app-llgreen my-2 p-2 rounded-md">
+                        className="bg-app-llgreen my-2 p-2 rounded-md"
+                        onClick={() => navigation(data.path)}>
                         <div className="grid-flow-col grid justify-start">
                           <text
                             style={{

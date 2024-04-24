@@ -96,7 +96,9 @@ export const Home = () => {
                     backgroundColor:
                       row.status === "Pending" ? "#FFFFFF" : "#F9FAFB",
                   }}>
-                  <a onClick={() => navigation("/approval")}>
+                  <a
+                    onClick={() => navigation("/approval")}
+                    className="underline">
                     Approve TimeSheet
                   </a>
                 </TableCell>
