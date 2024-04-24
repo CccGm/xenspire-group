@@ -6,6 +6,7 @@ import { Home } from "./home";
 import { Profile } from "./profile";
 import { SideNavAdmin } from "../widgets/sidenavAdmin";
 import { CreateTimeSheet } from "./createTimeSheet";
+import { PendingApproval } from "./pendingApproval";
 
 export const Admin = ({ setUser, email }) => {
   return (
@@ -18,6 +19,7 @@ export const Admin = ({ setUser, email }) => {
           <Route path="timesheet" element={<TimeSheet />} />
           <Route path="create" element={<CreateTimeSheet />} />
           <Route path="approval" element={<Approval />} />
+          <Route path="pendingApproval" element={<PendingApproval />} />
           <Route path="profile" element={<Profile />} />
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>

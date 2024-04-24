@@ -203,6 +203,132 @@ export const DummyData = [
   },
 ];
 
+export const Dummy_Approval = [
+  {
+    timesheetName: "t1",
+    startDate: "2024-04-01",
+    endDate: "2024-04-15",
+    status: "reject",
+  },
+  {
+    timesheetName: "t2",
+    startDate: "2024-04-01",
+    endDate: "2024-04-15",
+    status: "approved",
+  },
+  {
+    timesheetName: "t3",
+    startDate: "2024-04-01",
+    endDate: "2024-04-15",
+    status: "approved",
+  },
+  {
+    timesheetName: "t4",
+    startDate: "2024-04-01",
+    endDate: "2024-04-15",
+    status: "reject",
+  },
+];
+
+export const Dummy_Pending = [
+  {
+    timesheetName: "T1",
+    date: "2024-04-01",
+    workingHours: 8,
+    status: "reject", // input drop down list
+  },
+  {
+    timesheetName: "T2",
+    date: "2024-04-02",
+    workingHours: 8,
+    status: "approve", // input drop down list
+  },
+  {
+    timesheetName: "T3",
+    date: "2024-04-03",
+    workingHours: 8,
+    status: "reject", // input drop down list
+  },
+  {
+    timesheetName: "T4",
+    date: "2024-04-04",
+    workingHours: 8,
+    status: "reject", // input drop down list
+  },
+  {
+    timesheetName: "T5",
+    date: "2024-04-05",
+    workingHours: 8,
+    status: "approve", // input drop down list
+  },
+  {
+    timesheetName: "T6",
+    date: "2024-04-06",
+    workingHours: 8,
+    status: "approve", // input drop down list
+  },
+  {
+    timesheetName: "T7",
+    date: "2024-04-07",
+    workingHours: 8,
+    status: "approve", // input drop down list
+  },
+  {
+    timesheetName: "T8",
+    date: "2024-04-07",
+    workingHours: 8,
+    status: "reject", // input drop down list
+  },
+  {
+    timesheetName: "T9",
+    date: "2024-04-08",
+    workingHours: 8,
+    status: "reject", // input drop down list
+  },
+  {
+    timesheetName: "T10",
+    date: "2024-04-09",
+    workingHours: 8,
+    status: "reject", // input drop down list
+  },
+  {
+    timesheetName: "T11",
+    date: "2024-04-10",
+    workingHours: 8,
+    status: "reject", // input drop down list
+  },
+  {
+    timesheetName: "T12",
+    date: "2024-04-11",
+    workingHours: 8,
+    status: "reject", // input drop down list
+  },
+  {
+    timesheetName: "T13",
+    date: "2024-04-12",
+    workingHours: 8,
+    status: "reject", // input drop down list
+  },
+  {
+    timesheetName: "T14",
+    date: "2024-04-13",
+    workingHours: 8,
+    status: "reject", // input drop down list
+  },
+  {
+    timesheetName: "T15",
+    date: "2024-04-14",
+    workingHours: 8,
+    status: "reject", // input drop down list
+  },
+  {
+    timesheetName: "T16",
+    date: "2024-04-15",
+    workingHours: 8,
+    status: "reject", // input drop down list
+  },
+];
+
 export const get_Data = async () => {
   try {
     const response = await axios.get("http://localhost:3000/api/data/");

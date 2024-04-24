@@ -5,33 +5,12 @@ import {
   TableBody,
   TableCell,
   TableRow,
-  TextField,
-  InputAdornment,
-  Select,
-  MenuItem,
   TableContainer,
 } from "@mui/material";
 import { styled } from "@mui/material/styles";
-import { Search } from "@mui/icons-material";
-import { PendingApproval } from "./pendingApproval";
-import { DummyData, get_Data } from "../utils/dummy";
+import { Dummy_Approval, get_Data } from "../utils/dummy";
 
 export const Approval = () => {
-  const [name, setName] = React.useState("");
-  const [search, setSearch] = React.useState("");
-  const names = [
-    "Oliver Hansen",
-    "Van Henry",
-    "April Tucker",
-    "Ralph Hubbard",
-    "Omar Alexander",
-    "Carlos Abbott",
-    "Miriam Wagner",
-    "Bradley Wilkerson",
-    "Virginia Andrews",
-    "Kelly Snyder",
-  ];
-
   React.useState(() => {
     get_Data();
   }, []);
@@ -58,12 +37,12 @@ export const Approval = () => {
   const StyledTableContainer = styled(TableContainer)`
     border-top-left-radius: 0.3rem;
     border-top-right-radius: 0.3rem;
-    max-height: 400px;
+    max-height: 500px;
   `;
 
   return (
     <div className="mx-20 pt-10 pb-20 w-full">
-      <div className="flex justify-center">
+      <div className="flex justify-center pb-10">
         <text
           style={{
             color: "#53783B",
@@ -73,96 +52,50 @@ export const Approval = () => {
           Employee Approval
         </text>
       </div>
-      <div className="my-8 grid grid-flow-col justify-between">
-        <TextField
-          size="small"
-          value={search}
-          onChange={(e) => setSearch(e.target.value)}
-          placeholder="Search Employee for Approval"
-          InputProps={{
-            startAdornment: (
-              <InputAdornment position="start">
-                <Search />
-              </InputAdornment>
-            ),
-          }}
-          className="w-72"
-        />
-        <Select
-          size="small"
-          required
-          displayEmpty
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-          renderValue={(selected) => {
-            if (selected.length === 0) {
-              return (
-                <text style={{ color: "#667085" }}>
-                  Select Pending Approval
-                </text>
-              );
-            }
-            return selected;
-          }}
-          className="w-72">
-          {names.map((name) => (
-            <MenuItem key={name} value={name}>
-              {name}
-            </MenuItem>
-          ))}
-        </Select>
-      </div>
+      {/* table */}
+      <StyledTableContainer sx={{ borderWidth: 1 }}>
+        <Table aria-label="customized table" stickyHeader>
+          <StyledTableHead>
+            <TableRow>
+              <TableCell style={{ fontWeight: "bold", color: "#ffffff" }}>
+                Name
+              </TableCell>
+              <TableCell
+                align="center"
+                style={{ fontWeight: "bold", color: "#ffffff" }}>
+                Date
+              </TableCell>
 
-      {search ? (
-        <PendingApproval data={DummyData} />
-      ) : (
-        <>
-          {/* table */}
-          <StyledTableContainer sx={{ borderWidth: 1 }}>
-            <Table aria-label="customized table" stickyHeader>
-              <StyledTableHead>
-                <TableRow>
-                  <TableCell style={{ fontWeight: "bold", color: "#ffffff" }}>
-                    Name
-                  </TableCell>
-                  <TableCell
-                    align="center"
-                    style={{ fontWeight: "bold", color: "#ffffff" }}>
-                    Timesheet Period
-                  </TableCell>
+              <TableCell
+                align="center"
+                style={{ fontWeight: "bold", color: "#ffffff" }}>
+                Status
+              </TableCell>
+            </TableRow>
+          </StyledTableHead>
+          <TableBody>
+            {Dummy_Approval.map((row) => (
+              <StyledTableRow key={row.name}>
+                <TableCell component="th" scope="row">
+                  {row.timesheetName}
+                </TableCell>
+                <TableCell align="center">
+                  {row.startDate} to {row.endDate}
+                </TableCell>
 
-                  <TableCell
-                    align="center"
-                    style={{ fontWeight: "bold", color: "#ffffff" }}>
-                    Status
-                  </TableCell>
-                </TableRow>
-              </StyledTableHead>
-              <TableBody>
-                {DummyData.map((row) => (
-                  <StyledTableRow key={row.name}>
-                    <TableCell component="th" scope="row">
-                      {row.name}
-                    </TableCell>
-                    <TableCell align="center">
-                      {row.from} to {row.tofrom}
-                    </TableCell>
-
-                    <TableCell
-                      align="center"
-                      sx={{
-                        backgroundColor:
-                          row.status === "Pending" ? "#FFFFFF" : "#F9FAFB",
-                      }}>
-                      {row.status}
-                    </TableCell>
-                  </StyledTableRow>
-                ))}
-              </TableBody>
-            </Table>
-          </StyledTableContainer>
-        </>
-      )}
+                <TableCell
+                  align="center"
+                  sx={{
+                    backgroundColor:
+                      row.status === "Pending" ? "#FFFFFF" : "#F9FAFB",
+                  }}>
+                  {row.status}
+                </TableCell>
+              </StyledTableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </StyledTableContainer>
     </div>
   );
 };

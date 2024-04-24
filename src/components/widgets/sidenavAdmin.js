@@ -100,6 +100,7 @@ export const SideNavAdmin = ({ setUser, email }) => {
 
   const name = [
     { name: "Apporve", path: "/approval" },
+    { name: "Pending", path: "/pendingApproval" },
     { name: "Create", path: "/create" },
   ];
 

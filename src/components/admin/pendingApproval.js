@@ -9,13 +9,22 @@ import {
   FormLabel,
   Button,
   TableContainer,
+  TextField,
+  Select,
+  MenuItem,
+  Autocomplete,
 } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import pdf from "../../assets/images/pdf-icon.png";
 import avtar from "../../assets/images/Avatar.png";
+import { Dummy_Approval, Dummy_Pending } from "../utils/dummy";
 
-export const PendingApproval = ({ data }) => {
+export const PendingApproval = () => {
+  const [data, setData] = React.useState(Dummy_Pending);
   const [selected, setSelected] = React.useState([]);
+  const [name, setName] = React.useState("");
+  const [search, setSearch] = React.useState("");
+
   const StyledTableRow = styled(TableRow)(({ theme }) => ({
     "&:nth-of-type(odd)": {
       backgroundColor: "#F9FAFB",
@@ -61,169 +70,205 @@ export const PendingApproval = ({ data }) => {
   `;
 
   return (
-    <div className="grid grid-flow-col">
-      <div className="grid grid-flow-row">
-        {/* table */}
-        <StyledTableContainer sx={{ borderWidth: 1 }}>
-          <Table aria-label="customized table" stickyHeader>
-            <StyledTableHead>
-              <TableRow>
-                <TableCell></TableCell>
-                <TableCell style={{ fontWeight: "bold", color: "#ffffff" }}>
-                  Name
-                </TableCell>
-                <TableCell
-                  align="center"
-                  style={{ fontWeight: "bold", color: "#ffffff" }}>
-                  Timesheet Period
-                </TableCell>
-                <TableCell
-                  align="center"
-                  style={{ fontWeight: "bold", color: "#ffffff" }}>
-                  Hours
-                </TableCell>
-                <TableCell
-                  align="center"
-                  style={{ fontWeight: "bold", color: "#ffffff" }}>
-                  Status
-                </TableCell>
-              </TableRow>
-            </StyledTableHead>
-            <TableBody>
-              {data.map((row) => (
-                <StyledTableRow
-                  key={row.id}
-                  onClick={(event) => handleClick(event, row.id)}
-                  role="checkbox">
-                  <TableCell padding="checkbox">
-                    <Checkbox color="primary" checked={isSelected(row.id)} />
+    <div className="mx-20 pt-10 pb-20 w-full">
+      <div className="flex justify-center">
+        <text
+          style={{
+            color: "#53783B",
+            fontWeight: "bold",
+            fontSize: 28,
+          }}>
+          Employee Pending
+        </text>
+      </div>
+      <div className="my-8 grid grid-flow-col justify-between">
+        <Autocomplete
+          freeSolo
+          size="small"
+          options={data.map((option) => option.timesheetName)}
+          value={search}
+          onChange={(event, newValue) => {
+            setSearch(newValue);
+          }}
+          renderInput={(params) => (
+            <TextField {...params} label="Select Approval" />
+          )}
+          className="w-72"
+        />
+        <Select
+          size="small"
+          required
+          displayEmpty
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+          renderValue={(selected) => {
+            if (selected.length === 0) {
+              return (
+                <text style={{ color: "#667085" }}>
+                  Select Pending Approval
+                </text>
+              );
+            }
+            return selected;
+          }}
+          className="w-72">
+          {Dummy_Approval.map((data) => (
+            <MenuItem key={data.timesheetName} value={data.timesheetName}>
+              {data.timesheetName}
+            </MenuItem>
+          ))}
+        </Select>
+      </div>
+      <div className="grid grid-flow-col">
+        <div className="grid grid-flow-row">
+          {/* table */}
+          <StyledTableContainer sx={{ borderWidth: 1 }}>
+            <Table aria-label="customized table" stickyHeader>
+              <StyledTableHead>
+                <TableRow>
+                  <TableCell></TableCell>
+                  <TableCell style={{ fontWeight: "bold", color: "#ffffff" }}>
+                    Name
                   </TableCell>
-                  <TableCell component="th" scope="row">
-                    {row.name}
-                  </TableCell>
-                  <TableCell align="center">
-                    {row.from} to {row.tofrom}
-                  </TableCell>
-                  <TableCell align="center">{row.hour}</TableCell>
-
                   <TableCell
                     align="center"
-                    sx={{
-                      backgroundColor:
-                        row.status === "Pending" ? "#FFFFFF" : "#F9FAFB",
-                    }}>
-                    {row.status}
+                    style={{ fontWeight: "bold", color: "#ffffff" }}>
+                    Date
                   </TableCell>
-                </StyledTableRow>
-              ))}
-            </TableBody>
-          </Table>
-        </StyledTableContainer>
-        {/* view documents */}
-        <div className="mt-5 p-4">
-          <div className="grid grid-flow-row">
-            <text>View Documents </text>
-            <FormLabel>Download receipt for January 2022.</FormLabel>
-          </div>
-          <div>
-            <div className="grid grid-flow-col justify-between border border-app-simpleBorder rounded-md p-2 m-5">
-              <div className="grid grid-flow-col">
-                <img src={pdf} alt="pdf logo" />
-                <div className="grid grid-flow-row ml-5">
-                  <text style={{ color: "#101828" }}>
-                    Receipt_January_2022.pdf
-                  </text>
-                  <text style={{ color: "#475467" }}>200 KB</text>
-                </div>
-              </div>
-              <div>
-                <Button
-                  variant="outlined"
-                  style={{ color: "#344054", borderColor: "#D0D5DD" }}>
-                  Download
-                </Button>
-                <Button
-                  variant="contained"
-                  style={{
-                    backgroundColor: "#53783B",
-                    color: "#ffffff",
-                    marginLeft: 15,
-                  }}>
-                  View
-                </Button>
-              </div>
+                  <TableCell
+                    align="center"
+                    style={{ fontWeight: "bold", color: "#ffffff" }}>
+                    Hours
+                  </TableCell>
+                  <TableCell
+                    align="center"
+                    style={{ fontWeight: "bold", color: "#ffffff" }}>
+                    Status
+                  </TableCell>
+                </TableRow>
+              </StyledTableHead>
+              <TableBody>
+                {data.map((row, index) => (
+                  <StyledTableRow
+                    key={index}
+                    onClick={(event) => handleClick(event, index)}
+                    role="checkbox">
+                    <TableCell padding="checkbox">
+                      <Checkbox color="primary" checked={isSelected(index)} />
+                    </TableCell>
+                    <TableCell component="th" scope="row">
+                      {row.timesheetName}
+                    </TableCell>
+                    <TableCell align="center">{row.date}</TableCell>
+                    <TableCell align="center">{row.workingHours}</TableCell>
+
+                    <TableCell
+                      align="center"
+                      sx={{
+                        backgroundColor:
+                          row.status === "Pending" ? "#FFFFFF" : "#F9FAFB",
+                      }}>
+                      {row.status}
+                    </TableCell>
+                  </StyledTableRow>
+                ))}
+              </TableBody>
+            </Table>
+          </StyledTableContainer>
+          {/* view documents */}
+          <div className="mt-5 p-4">
+            <div className="grid grid-flow-row">
+              <text>View Documents </text>
+              <FormLabel>Download receipt for January 2022.</FormLabel>
             </div>
-            <div className="grid grid-flow-col justify-between border border-app-simpleBorder rounded-md p-2 m-5">
-              <div className="grid grid-flow-col">
-                <img src={pdf} alt="pdf logo" />
-                <div className="grid grid-flow-row ml-5">
-                  <text style={{ color: "#101828" }}>
-                    Receipt_January_2022.pdf
-                  </text>
-                  <text style={{ color: "#475467" }}>200 KB</text>
+            <div>
+              <div className="grid grid-flow-col justify-between border border-app-simpleBorder rounded-md p-2 m-5">
+                <div className="grid grid-flow-col">
+                  <img src={pdf} alt="pdf logo" />
+                  <div className="grid grid-flow-row ml-5">
+                    <text style={{ color: "#101828" }}>
+                      Receipt_January_2022.pdf
+                    </text>
+                    <text style={{ color: "#475467" }}>200 KB</text>
+                  </div>
+                </div>
+                <div>
+                  <Button
+                    variant="outlined"
+                    style={{ color: "#344054", borderColor: "#D0D5DD" }}>
+                    Download
+                  </Button>
+                  <Button
+                    variant="contained"
+                    style={{
+                      backgroundColor: "#53783B",
+                      color: "#ffffff",
+                      marginLeft: 15,
+                    }}>
+                    View
+                  </Button>
                 </div>
               </div>
-              <div>
-                <Button
-                  variant="outlined"
-                  style={{ color: "#344054", borderColor: "#D0D5DD" }}>
-                  Download
-                </Button>
-                <Button
-                  variant="contained"
-                  style={{
-                    backgroundColor: "#53783B",
-                    color: "#ffffff",
-                    marginLeft: 15,
-                  }}>
-                  View
-                </Button>
+              <div className="grid grid-flow-col justify-between border border-app-simpleBorder rounded-md p-2 m-5">
+                <div className="grid grid-flow-col">
+                  <img src={pdf} alt="pdf logo" />
+                  <div className="grid grid-flow-row ml-5">
+                    <text style={{ color: "#101828" }}>
+                      Receipt_January_2022.pdf
+                    </text>
+                    <text style={{ color: "#475467" }}>200 KB</text>
+                  </div>
+                </div>
+                <div>
+                  <Button
+                    variant="outlined"
+                    style={{ color: "#344054", borderColor: "#D0D5DD" }}>
+                    Download
+                  </Button>
+                  <Button
+                    variant="contained"
+                    style={{
+                      backgroundColor: "#53783B",
+                      color: "#ffffff",
+                      marginLeft: 15,
+                    }}>
+                    View
+                  </Button>
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-      <div>
-        <div className="grid grid-flow-row">
-          <text className="text-app-green font-bold my-5 text-xl text-center">
-            Pending Approval
-          </text>
-          <div className="grid grid-flow-col border border-app-gray p-2 mx-3 mb-2 rounded-md">
-            <div className="grid grid-flow-col justify-start gap-3">
-              <img src={avtar} alt="image" />
-              <div className="grid grid-flow-row">
-                <text>Olivia Rhye</text>
-                <text>@olovia</text>
-              </div>
+        {/* pending Approval */}
+        <div>
+          <div className="grid grid-flow-row pl-16">
+            <text className="text-app-green font-bold my-5 text-xl text-center">
+              Pending Approval
+            </text>
+            {Dummy_Approval.map((data, index) => {
+              return (
+                <div
+                  key={index}
+                  className="grid grid-flow-col border border-app-gray p-2 mx-3 mb-2 rounded-md">
+                  <div className="grid grid-flow-col justify-start gap-5 pl-5">
+                    <img src={avtar} alt="image" />
+                    <div className="grid grid-flow-row">
+                      <text>{data.timesheetName}</text>
+                      <text>{data.status}</text>
+                    </div>
+                  </div>
+                  <Checkbox />
+                </div>
+              );
+            })}
+
+            <div className="justify-center flex mt-10">
+              <Button
+                variant="contained"
+                style={{ color: "#ffffff", background: "#53783B" }}>
+                Bulk Approvals
+              </Button>
             </div>
-            <Checkbox />
-          </div>
-          <div className="grid grid-flow-col border border-app-gray p-2 mx-3 mb-2 rounded-md">
-            <div className="grid grid-flow-col justify-start gap-3">
-              <img src={avtar} alt="image" />
-              <div className="grid grid-flow-row">
-                <text>Olivia Rhye</text>
-                <text>@olovia</text>
-              </div>
-            </div>
-            <Checkbox />
-          </div>
-          <div className="grid grid-flow-col border border-app-gray p-2 mx-3 mb-2 rounded-md">
-            <div className="grid grid-flow-col justify-start gap-3">
-              <img src={avtar} alt="image" />
-              <div className="grid grid-flow-row">
-                <text>Olivia Rhye</text>
-                <text>@olovia</text>
-              </div>
-            </div>
-            <Checkbox />
-          </div>
-          <div className="justify-center flex mt-10">
-            <Button
-              variant="contained"
-              style={{ color: "#ffffff", background: "#53783B" }}>
-              Bulk Approvals
-            </Button>
           </div>
         </div>
       </div>
