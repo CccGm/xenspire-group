@@ -59,7 +59,7 @@ export const SideNav = ({ setUser, email }) => {
           <Accordion
             expanded={expanded === "Home"}
             onChange={handleChange("Home")}
-            sx={{ backgroundColor: "#53783B50", mt: 2 }}>
+            sx={{ backgroundColor: "#CEEAB0", mt: 2 }}>
             <AccordionSummary
               expandIcon={<ExpandMoreIcon />}
               aria-controls="panel1bh-content"
@@ -97,7 +97,7 @@ export const SideNav = ({ setUser, email }) => {
           <Accordion
             expanded={expanded === "Profile"}
             onChange={handleChange("Profile")}
-            sx={{ backgroundColor: "#53783B50", mt: 2 }}>
+            sx={{ backgroundColor: "#CEEAB0", mt: 2 }}>
             <AccordionSummary
               expandIcon={<ExpandMoreIcon />}
               aria-controls="panel1bh-content"
@@ -135,7 +135,7 @@ export const SideNav = ({ setUser, email }) => {
           <Accordion
             expanded={expanded === "Documents"}
             onChange={handleChange("Documents")}
-            sx={{ backgroundColor: "#53783B50", mt: 2 }}>
+            sx={{ backgroundColor: "#CEEAB0", mt: 2 }}>
             <AccordionSummary
               expandIcon={<ExpandMoreIcon />}
               aria-controls="panel1bh-content"
@@ -173,7 +173,7 @@ export const SideNav = ({ setUser, email }) => {
           <Accordion
             expanded={expanded === "Dashboards"}
             onChange={handleChange("Dashboards")}
-            sx={{ backgroundColor: "#53783B50", mt: 2 }}>
+            sx={{ backgroundColor: "#CEEAB0", mt: 2 }}>
             <AccordionSummary
               expandIcon={<ExpandMoreIcon />}
               aria-controls="panel1bh-content"
@@ -211,7 +211,7 @@ export const SideNav = ({ setUser, email }) => {
           <Accordion
             expanded={expanded === "Timesheets"}
             onChange={handleChange("Timesheets")}
-            sx={{ backgroundColor: "#53783B50", mt: 2 }}>
+            sx={{ backgroundColor: "#CEEAB0", mt: 2 }}>
             <AccordionSummary
               expandIcon={<ExpandMoreIcon />}
               aria-controls="panel1bh-content"
@@ -249,7 +249,7 @@ export const SideNav = ({ setUser, email }) => {
           <Accordion
             expanded={expanded === "Settings"}
             onChange={handleChange("Settings")}
-            sx={{ backgroundColor: "#53783B50", mt: 2 }}>
+            sx={{ backgroundColor: "#CEEAB0", mt: 2 }}>
             <AccordionSummary
               expandIcon={<ExpandMoreIcon />}
               aria-controls="panel1bh-content"
