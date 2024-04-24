@@ -4,13 +4,8 @@ import {
   ListItemButton,
   ListItemIcon,
   ListItemText,
-  AccordionDetails,
-  AccordionSummary,
-  Typography,
-  Accordion,
 } from "@mui/material";
 import { LogoutOutlined } from "@mui/icons-material";
-import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { useNavigate } from "react-router-dom";
 import { styled } from "@mui/material/styles";
 import MuiDrawer from "@mui/material/Drawer";
@@ -23,7 +18,6 @@ import avtar from "../../assets/images/Avatar.png";
 import home from "../../assets/images/home-icon.png";
 import profile from "../../assets/images/profile-icon.png";
 import time from "../../assets/images/timesheets-icon.png";
-
 import logo from "../../assets/images/Logo.png";
 import Footer from "./footer";
 
@@ -34,8 +28,8 @@ export const SideNav = ({ setUser, email }) => {
   const [open, setOpen] = React.useState(false);
   const [data, setData] = React.useState([]);
 
-  const handleChange = (panel) => (event, isExpanded) => {
-    setExpanded(isExpanded ? panel : false);
+  const handleChange = () => {
+    setExpanded(!expanded);
   };
 
   const drawerWidth = 250;
@@ -148,6 +142,7 @@ export const SideNav = ({ setUser, email }) => {
                 }}
               />
             </ListItem>
+
             {data.map((data, index) => (
               <ListItemButton
                 key={index}
@@ -157,6 +152,7 @@ export const SideNav = ({ setUser, email }) => {
                   backgroundColor: "#53783B",
                   margin: 1,
                   borderRadius: 2,
+                  ":hover": { backgroundColor: "#1283af" },
                 }}
                 onClick={() => navigation(data.path)}>
                 <ListItemIcon
@@ -173,52 +169,50 @@ export const SideNav = ({ setUser, email }) => {
                 />
               </ListItemButton>
             ))}
+
             {open && (
-              <Accordion
-                expanded={expanded === "profile"}
-                onChange={handleChange("profile")}
+              <ListItemButton
                 sx={{
+                  justifyContent: open ? "initial" : "center",
+                  px: 2.5,
                   backgroundColor: "#53783B",
-                  mt: 2,
-                  mx: 1,
-                }}>
-                <AccordionSummary
-                  expandIcon={<ExpandMoreIcon />}
-                  aria-controls="panel1bh-content"
-                  id="panel1bh-header">
-                  <ListItemIcon
-                    sx={{
-                      minWidth: 0,
-                      mr: open ? 3 : "auto",
-                      justifyContent: "center",
-                    }}>
-                    <img src={profile} alt="logo" />
-                  </ListItemIcon>
-                  <Typography sx={{ color: "black" }}>Profile</Typography>
-                </AccordionSummary>
-                <AccordionDetails>
-                  {profile_name.map((data, index) => {
-                    return (
-                      <div
-                        key={index}
-                        className="bg-app-llgreen my-2 p-2 rounded-md"
-                        onClick={() => navigation(data.path)}>
-                        <div className="grid-flow-col grid justify-start">
-                          <text
-                            style={{
-                              color: "black",
-                              fontSize: 14,
-                              marginLeft: 10,
-                            }}>
-                            {data.name}
-                          </text>
-                        </div>
-                      </div>
-                    );
-                  })}
-                </AccordionDetails>
-              </Accordion>
+                  margin: 1,
+                  borderRadius: 2,
+                  ":hover": { backgroundColor: "#1283af" },
+                }}
+                onClick={() => handleChange()}>
+                <ListItemIcon
+                  sx={{
+                    minWidth: 0,
+                    mr: open ? 3 : "auto",
+                    justifyContent: "center",
+                  }}>
+                  <img src={profile} alt="logo" />
+                </ListItemIcon>
+                <ListItemText
+                  primary={"Profile"}
+                  sx={{ ":hover": { color: "white" } }}
+                />
+              </ListItemButton>
             )}
+
+            {open &&
+              expanded &&
+              profile_name.map((data, index) => (
+                <ListItemButton
+                  key={index}
+                  sx={{
+                    justifyContent: "center",
+                    px: 2.5,
+                    backgroundColor: "#CEEAB0",
+                    margin: 1,
+                    borderRadius: 2,
+                    ":hover": { backgroundColor: "#7B964A", color: "#ffffff" },
+                  }}
+                  onClick={() => navigation(data.path)}>
+                  <text>{data.name}</text>
+                </ListItemButton>
+              ))}
           </List>
         </div>
         {open && (

@@ -7,6 +7,7 @@ import {
   Table,
   TableBody,
   TableCell,
+  TableContainer,
   TableHead,
   TableRow,
   TextField,
@@ -35,6 +36,18 @@ export const Home = () => {
     },
   }));
 
+  const StyledTableHead = styled(TableHead)`
+    & .MuiTableCell-root {
+      background-color: #53783b;
+    }
+  `;
+
+  const StyledTableContainer = styled(TableContainer)`
+    border-top-left-radius: 0.3rem;
+    border-top-right-radius: 0.3rem;
+    max-height: 400px;
+  `;
+
   return (
     <div className="py-16 px-10 w-full">
       <div className="ml-10 mb-5">
@@ -54,13 +67,9 @@ export const Home = () => {
         />
       </div>
       {/* table */}
-      <div className="mt-3  border border-app-border rounded-md max-h-96 overflow-y-auto">
-        {/* <TableContainer style={{ maxHeight: 150 }}> */}
-        <Table aria-label="customized table">
-          <TableHead
-            sx={{
-              backgroundColor: "#53783B",
-            }}>
+      <StyledTableContainer sx={{ borderWidth: 1 }}>
+        <Table aria-label="customized table" stickyHeader>
+          <StyledTableHead>
             <TableRow>
               <TableCell
                 align="center"
@@ -83,7 +92,7 @@ export const Home = () => {
                 Actions
               </TableCell>
             </TableRow>
-          </TableHead>
+          </StyledTableHead>
           <TableBody>
             {array.map((row) => (
               <StyledTableRow key={row.name}>
@@ -106,8 +115,8 @@ export const Home = () => {
             ))}
           </TableBody>
         </Table>
-        {/* </TableContainer> */}
-      </div>
+      </StyledTableContainer>
+
       <div className="mt-10 ml-10">
         <Select
           size="small"

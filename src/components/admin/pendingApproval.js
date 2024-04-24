@@ -8,6 +8,7 @@ import {
   Checkbox,
   FormLabel,
   Button,
+  TableContainer,
 } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import pdf from "../../assets/images/pdf-icon.png";
@@ -46,13 +47,26 @@ export const PendingApproval = ({ data }) => {
     }
     setSelected(newSelected);
   };
+
+  const StyledTableHead = styled(TableHead)`
+    & .MuiTableCell-root {
+      background-color: #53783b;
+    }
+  `;
+
+  const StyledTableContainer = styled(TableContainer)`
+    border-top-left-radius: 0.3rem;
+    border-top-right-radius: 0.3rem;
+    max-height: 400px;
+  `;
+
   return (
     <div className="grid grid-flow-col">
       <div className="grid grid-flow-row">
         {/* table */}
-        <div className="mt-3  border border-app-border rounded-md max-h-96 overflow-y-auto">
-          <Table aria-label="customized table">
-            <TableHead sx={{ backgroundColor: "#53783B" }}>
+        <StyledTableContainer sx={{ borderWidth: 1 }}>
+          <Table aria-label="customized table" stickyHeader>
+            <StyledTableHead>
               <TableRow>
                 <TableCell></TableCell>
                 <TableCell style={{ fontWeight: "bold", color: "#ffffff" }}>
@@ -74,7 +88,7 @@ export const PendingApproval = ({ data }) => {
                   Status
                 </TableCell>
               </TableRow>
-            </TableHead>
+            </StyledTableHead>
             <TableBody>
               {data.map((row) => (
                 <StyledTableRow
@@ -104,7 +118,7 @@ export const PendingApproval = ({ data }) => {
               ))}
             </TableBody>
           </Table>
-        </div>
+        </StyledTableContainer>
         {/* view documents */}
         <div className="mt-5 p-4">
           <div className="grid grid-flow-row">

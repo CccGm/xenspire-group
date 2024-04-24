@@ -9,13 +9,6 @@ import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
-import {
-  AccordionDetails,
-  AccordionSummary,
-  Typography,
-  Accordion,
-} from "@mui/material";
-import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import MenuIcon from "@mui/icons-material/Menu";
 import { LogoutOutlined } from "@mui/icons-material";
 import logo from "../../assets/images/Logo.png";
@@ -32,8 +25,8 @@ export const SideNavAdmin = ({ setUser, email }) => {
   const [expanded, setExpanded] = React.useState(false);
   const [data, setData] = React.useState([]);
 
-  const handleChange = (panel) => (event, isExpanded) => {
-    setExpanded(isExpanded ? panel : false);
+  const handleChange = () => {
+    setExpanded(!expanded);
   };
 
   const drawerWidth = 250;
@@ -154,6 +147,7 @@ export const SideNavAdmin = ({ setUser, email }) => {
                   backgroundColor: "#53783B",
                   margin: 1,
                   borderRadius: 2,
+                  ":hover": { backgroundColor: "#1283af" },
                 }}
                 onClick={() => navigation(data.path)}>
                 <ListItemIcon
@@ -166,56 +160,52 @@ export const SideNavAdmin = ({ setUser, email }) => {
                 </ListItemIcon>
                 <ListItemText
                   primary={data.name}
-                  sx={{ opacity: open ? 1 : 0 }}
+                  sx={{ opacity: open ? 1 : 0, ":hover": { color: "white" } }}
                 />
               </ListItemButton>
             ))}
             {open && (
-              <Accordion
-                expanded={expanded === "Settings"}
-                onChange={handleChange("Settings")}
+              <ListItemButton
                 sx={{
+                  justifyContent: open ? "initial" : "center",
+                  px: 2.5,
                   backgroundColor: "#53783B",
-                  mt: 2,
-                  mx: 1,
-                }}>
-                <AccordionSummary
-                  expandIcon={<ExpandMoreIcon />}
-                  aria-controls="panel1bh-content"
-                  id="panel1bh-header">
-                  <ListItemIcon
-                    sx={{
-                      minWidth: 0,
-                      mr: open ? 3 : "auto",
-                      justifyContent: "center",
-                    }}>
-                    <img src={time} alt="logo" />
-                  </ListItemIcon>
-                  <Typography sx={{ color: "black" }}>TimeSheet</Typography>
-                </AccordionSummary>
-                <AccordionDetails>
-                  {name.map((data, index) => {
-                    return (
-                      <div
-                        key={index}
-                        className="bg-app-llgreen my-2 p-2 rounded-md"
-                        onClick={() => navigation(data.path)}>
-                        <div className="grid-flow-col grid justify-start">
-                          <text
-                            style={{
-                              color: "black",
-                              fontSize: 14,
-                              marginLeft: 10,
-                            }}>
-                            {data.name}
-                          </text>
-                        </div>
-                      </div>
-                    );
-                  })}
-                </AccordionDetails>
-              </Accordion>
+                  margin: 1,
+                  borderRadius: 2,
+                  ":hover": { backgroundColor: "#1283af" },
+                }}
+                onClick={() => handleChange()}>
+                <ListItemIcon
+                  sx={{
+                    minWidth: 0,
+                    mr: open ? 3 : "auto",
+                    justifyContent: "center",
+                  }}>
+                  <img src={time} alt="logo" />
+                </ListItemIcon>
+                <ListItemText
+                  primary={"TimeSheet"}
+                  sx={{ ":hover": { color: "white" } }}
+                />
+              </ListItemButton>
             )}
+            {open &&
+              expanded &&
+              name.map((data, index) => (
+                <ListItemButton
+                  key={index}
+                  sx={{
+                    justifyContent: "center",
+                    px: 2.5,
+                    backgroundColor: "#CEEAB0",
+                    margin: 1,
+                    borderRadius: 2,
+                    ":hover": { backgroundColor: "#7B964A", color: "#ffffff" },
+                  }}
+                  onClick={() => navigation(data.path)}>
+                  <text>{data.name}</text>
+                </ListItemButton>
+              ))}
           </List>
         </div>
         {open && (

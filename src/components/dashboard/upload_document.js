@@ -6,6 +6,7 @@ import {
   TableBody,
   TableRow,
   TableCell,
+  TableContainer,
 } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import { UploadFileOutlined } from "@mui/icons-material";
@@ -75,6 +76,18 @@ export const Upload_Document = ({ next }) => {
     width: 1,
   });
 
+  const StyledTableHead = styled(TableHead)`
+    & .MuiTableCell-root {
+      background-color: #53783b;
+    }
+  `;
+
+  const StyledTableContainer = styled(TableContainer)`
+    border-top-left-radius: 0.3rem;
+    border-top-right-radius: 0.3rem;
+    max-height: 400px;
+  `;
+
   return (
     <div>
       <form className="mx-20" onSubmit={handleSubmit}>
@@ -88,25 +101,26 @@ export const Upload_Document = ({ next }) => {
             Upload your Documents
           </text>
         </div>
-        <div className="mt-3  border border-app-border rounded-md max-h-96 overflow-y-auto">
-          <Table aria-label="customized table">
-            <TableHead>
+        {/* table */}
+        <StyledTableContainer sx={{ borderWidth: 1 }}>
+          <Table aria-label="customized table" stickyHeader>
+            <StyledTableHead>
               <TableRow>
-                <TableCell style={{ fontWeight: "bold", color: "#475467" }}>
+                <TableCell style={{ fontWeight: "bold", color: "#ffffff" }}>
                   Document Name
                 </TableCell>
                 <TableCell
                   align="center"
-                  style={{ fontWeight: "bold", color: "#475467" }}>
+                  style={{ fontWeight: "bold", color: "#ffffff" }}>
                   Upload File
                 </TableCell>
                 <TableCell
                   align="center"
-                  style={{ fontWeight: "bold", color: "#475467" }}>
+                  style={{ fontWeight: "bold", color: "#ffffff" }}>
                   Updated Status
                 </TableCell>
               </TableRow>
-            </TableHead>
+            </StyledTableHead>
             <TableBody>
               {/* pdf */}
               <StyledTableRow key="pdf">
@@ -290,7 +304,7 @@ export const Upload_Document = ({ next }) => {
               </StyledTableRow>
             </TableBody>
           </Table>
-        </div>
+        </StyledTableContainer>
         <div className="mt-5 justify-end flex">
           <Button
             style={{ color: "white", borderColor: "#7F56D9" }}
