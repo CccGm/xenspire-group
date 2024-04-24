@@ -15,6 +15,8 @@ module.exports = {
         border: "#475467",
         offWhite: "#F9FAFB",
         simpleBorder: "#EAECF0",
+        ligeen: "#EEFFCF",
+        llgreen: "#CEEAB0",
       },
     },
   },

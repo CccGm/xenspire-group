@@ -67,7 +67,7 @@ export const TimeSheet = () => {
   }, []);
 
   return (
-    <div className="mx-32 pt-10 pb-20">
+    <div className="mx-32 pt-10 pb-20 w-full">
       <div className="flex justify-center">
         <text
           style={{
@@ -108,13 +108,28 @@ export const TimeSheet = () => {
                 textTransform: "none",
                 marginLeft: 5,
               }}
+              onClick={() => navigation("/home")}>
+              Home
+            </Button>
+
+            <Button
+              style={{ color: "white", borderColor: "#7F56D9" }}
+              variant="contained"
+              sx={{
+                backgroundColor: "#53783B",
+                "&:hover": {
+                  backgroundColor: "#53783B",
+                },
+                textTransform: "none",
+                marginLeft: 5,
+              }}
               onClick={() => setCreate(true)}>
               Create New
             </Button>
           </div>
 
           {/* table */}
-          <div className="mt-3  border border-app-border rounded-md ">
+          <div className="mt-3  border border-app-border rounded-md max-h-96 overflow-y-auto">
             <Table aria-label="customized table">
               <TableHead sx={{ backgroundColor: "#53783B" }}>
                 <TableRow>

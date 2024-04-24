@@ -50,7 +50,7 @@ export const PendingApproval = ({ data }) => {
     <div className="grid grid-flow-col">
       <div className="grid grid-flow-row">
         {/* table */}
-        <div className="mt-3  border border-app-border rounded-md ">
+        <div className="mt-3  border border-app-border rounded-md max-h-96 overflow-y-auto">
           <Table aria-label="customized table">
             <TableHead sx={{ backgroundColor: "#53783B" }}>
               <TableRow>

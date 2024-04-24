@@ -49,7 +49,7 @@ export const Approval = () => {
   }));
 
   return (
-    <div className="mx-20 pt-10 pb-20">
+    <div className="mx-20 pt-10 pb-20 w-full">
       <div className="flex justify-center">
         <text
           style={{
@@ -105,7 +105,7 @@ export const Approval = () => {
       ) : (
         <>
           {/* table */}
-          <div className="mt-3  border border-app-border rounded-md ">
+          <div className="mt-3  border border-app-border rounded-md max-h-96 overflow-y-auto">
             <Table aria-label="customized table">
               <TableHead sx={{ backgroundColor: "#53783B" }}>
                 <TableRow>

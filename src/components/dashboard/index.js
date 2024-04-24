@@ -4,6 +4,7 @@ import Footer from "../widgets/footer";
 import { Home } from "./home";
 import { SideNav } from "../widgets/sidenav";
 import { DashboardTimeSheet } from "./dashboardTimeSheet";
+import { Profile } from "./profile";
 
 export const DashBoard = ({ setUser, email }) => {
   return (
@@ -13,6 +14,7 @@ export const DashBoard = ({ setUser, email }) => {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="dashboard" element={<DashboardTimeSheet />} />
+          <Route path="profile" element={<Profile />} />
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </div>

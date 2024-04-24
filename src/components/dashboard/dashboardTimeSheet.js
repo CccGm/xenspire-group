@@ -18,6 +18,7 @@ import { DummyData, get_Data } from "../utils/dummy";
 export const DashboardTimeSheet = () => {
   const [timeSheet, setTimeSheet] = React.useState("");
   const [submittion, setSubmission] = React.useState("");
+  const [array, setArray] = React.useState(DummyData);
 
   const names = [
     "Oliver Hansen",
@@ -79,6 +80,12 @@ export const DashboardTimeSheet = () => {
     setTimeSheet("");
   };
 
+  const handleHouerChange = (e, index) => {
+    let newFormValues = [...array];
+    newFormValues[index].hour = e.target.value;
+    setArray(newFormValues);
+  };
+
   return (
     <div className="mx-32 pt-10 pb-20">
       <div className="flex justify-center">
@@ -131,7 +138,7 @@ export const DashboardTimeSheet = () => {
       {timeSheet ? (
         <>
           {/* table submit */}
-          <div className="mt-3  border border-app-border rounded-md ">
+          <div className="mt-3  border border-app-border rounded-md max-h-96 overflow-y-auto">
             <Table aria-label="customized table">
               <TableHead sx={{ backgroundColor: "#53783B" }}>
                 <TableRow>
@@ -156,7 +163,7 @@ export const DashboardTimeSheet = () => {
                 </TableRow>
               </TableHead>
               <TableBody>
-                {DummyData.map((row) => (
+                {array.map((row) => (
                   <StyledTableRow key={row.name}>
                     <TableCell>
                       {row.from} to {row.tofrom}
@@ -197,7 +204,7 @@ export const DashboardTimeSheet = () => {
       ) : (
         <>
           {/* table  approval */}
-          <div className="mt-3  border border-app-border rounded-md ">
+          <div className="mt-3  border border-app-border rounded-md max-h-96 overflow-y-auto">
             <Table aria-label="customized table">
               <TableHead sx={{ backgroundColor: "#53783B" }}>
                 <TableRow>
@@ -216,14 +223,22 @@ export const DashboardTimeSheet = () => {
                 </TableRow>
               </TableHead>
               <TableBody>
-                {DummyData.map((row) => (
-                  <StyledTableRow key={row.name}>
+                {array.map((row, index) => (
+                  <StyledTableRow key={index}>
                     <TableCell>
                       {row.from} to {row.tofrom}
                     </TableCell>
                     <TableCell>{row.from}</TableCell>
 
-                    <TableCell align="center">{row.hour}</TableCell>
+                    <TableCell align="center">
+                      <div className=" justify-center">
+                        <input
+                          value={row.hour}
+                          className=" w-10  text-center"
+                          onChange={(e) => handleHouerChange(e, index)}
+                        />
+                      </div>
+                    </TableCell>
                   </StyledTableRow>
                 ))}
               </TableBody>

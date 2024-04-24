@@ -88,7 +88,7 @@ export const Upload_Document = ({ next }) => {
             Upload your Documents
           </text>
         </div>
-        <div className="mt-3  border border-app-border rounded-md ">
+        <div className="mt-3  border border-app-border rounded-md max-h-96 overflow-y-auto">
           <Table aria-label="customized table">
             <TableHead>
               <TableRow>
