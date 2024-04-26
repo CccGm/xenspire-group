@@ -15,8 +15,9 @@ export const PdfView = () => {
         </IconButton>
       </div>
       <iframe
-        src={URL.createObjectURL(location.state)}
-        title={location.state.name}
+        // src={URL.createObjectURL(location.state)}
+        src={require("../../assets/GIL Letter.pdf")}
+        title={"GIL Letter.pdf"}
         width="100%"
         height="93%"
       />

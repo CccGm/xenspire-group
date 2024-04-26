@@ -27,7 +27,6 @@ export const PendingApproval = () => {
   const [selected, setSelected] = React.useState([]);
   const [name, setName] = React.useState("");
   const [search, setSearch] = React.useState("");
-  const [selectFile, setSelectFile] = React.useState();
 
   const StyledTableRow = styled(TableRow)(({ theme }) => ({
     "&:nth-of-type(odd)": {
@@ -93,10 +92,11 @@ export const PendingApproval = () => {
   }, [search]);
 
   const DownloadFile = () => {
-    const pdfUrl = URL.createObjectURL(selectFile);
+    // const pdfUrl = URL.createObjectURL(require("../../assets/GIL Letter.pdf"));
+    const pdfUrl = require("../../assets/GIL Letter.pdf");
     const link = document.createElement("a");
     link.href = pdfUrl;
-    link.download = selectFile.name; // specify the filename
+    link.download = "newPdf.pdf"; // specify the filename
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
@@ -232,48 +232,35 @@ export const PendingApproval = () => {
               <FormLabel>Download receipt for January 2022.</FormLabel>
             </div>
             <div>
-              <input
-                type="file"
-                accept=".pdf"
-                onChange={(e) => {
-                  setSelectFile(e.target.files[0]);
-                }}
-              />
-              {selectFile && (
-                <div className="grid grid-flow-col justify-between border border-app-simpleBorder rounded-md p-2 m-5">
-                  <div className="grid grid-flow-col">
-                    <img src={pdf} alt="pdf logo" />
-                    <div className="grid grid-flow-row ml-5">
-                      <text style={{ color: "#101828" }}>
-                        {selectFile.name}
-                      </text>
-                      <text style={{ color: "#475467" }}>
-                        {returnFileSize(selectFile.size)}
-                      </text>
-                    </div>
-                  </div>
-                  <div>
-                    <Button
-                      variant="outlined"
-                      style={{ color: "#344054", borderColor: "#D0D5DD" }}
-                      onClick={DownloadFile}>
-                      Download
-                    </Button>
-                    <Button
-                      variant="contained"
-                      style={{
-                        backgroundColor: "#53783B",
-                        color: "#ffffff",
-                        marginLeft: 15,
-                      }}
-                      onClick={() => {
-                        navigation("/pdfview", { state: selectFile });
-                      }}>
-                      View
-                    </Button>
+              <div className="grid grid-flow-col justify-between border border-app-simpleBorder rounded-md p-2 m-5">
+                <div className="grid grid-flow-col">
+                  <img src={pdf} alt="pdf logo" />
+                  <div className="grid grid-flow-row ml-5">
+                    <text style={{ color: "#101828" }}>GiL Letter</text>
+                    <text style={{ color: "#475467" }}>2.36 MB</text>
                   </div>
                 </div>
-              )}
+                <div>
+                  <Button
+                    variant="outlined"
+                    style={{ color: "#344054", borderColor: "#D0D5DD" }}
+                    onClick={DownloadFile}>
+                    Download
+                  </Button>
+                  <Button
+                    variant="contained"
+                    style={{
+                      backgroundColor: "#53783B",
+                      color: "#ffffff",
+                      marginLeft: 15,
+                    }}
+                    onClick={() => {
+                      navigation("/pdfview", { state: "" });
+                    }}>
+                    View
+                  </Button>
+                </div>
+              </div>
             </div>
           </div>
         </div>
