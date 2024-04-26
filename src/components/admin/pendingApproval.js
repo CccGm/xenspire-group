@@ -18,13 +18,16 @@ import { styled } from "@mui/material/styles";
 import pdf from "../../assets/images/pdf-icon.png";
 import avtar from "../../assets/images/Avatar.png";
 import { Dummy_Approval, Dummy_Pending } from "../utils/dummy";
+import { useNavigate } from "react-router-dom";
 
 export const PendingApproval = () => {
+  const navigation = useNavigate();
   const [data, setData] = React.useState(Dummy_Pending);
   const [searchData, setSearchData] = React.useState([]);
   const [selected, setSelected] = React.useState([]);
   const [name, setName] = React.useState("");
   const [search, setSearch] = React.useState("");
+  const [selectFile, setSelectFile] = React.useState();
 
   const StyledTableRow = styled(TableRow)(({ theme }) => ({
     "&:nth-of-type(odd)": {
@@ -88,6 +91,26 @@ export const PendingApproval = () => {
   React.useEffect(() => {
     searchHandle();
   }, [search]);
+
+  const DownloadFile = () => {
+    const pdfUrl = URL.createObjectURL(selectFile);
+    const link = document.createElement("a");
+    link.href = pdfUrl;
+    link.download = selectFile.name; // specify the filename
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
+  const returnFileSize = (number) => {
+    if (number < 1024) {
+      return `${number} bytes`;
+    } else if (number >= 1024 && number < 1048576) {
+      return `${(number / 1024).toFixed(1)} KB`;
+    } else if (number >= 1048576) {
+      return `${(number / 1048576).toFixed(1)} MB`;
+    }
+  };
 
   return (
     <div className="mx-20 pt-10 pb-20 w-full">
@@ -209,60 +232,48 @@ export const PendingApproval = () => {
               <FormLabel>Download receipt for January 2022.</FormLabel>
             </div>
             <div>
-              <div className="grid grid-flow-col justify-between border border-app-simpleBorder rounded-md p-2 m-5">
-                <div className="grid grid-flow-col">
-                  <img src={pdf} alt="pdf logo" />
-                  <div className="grid grid-flow-row ml-5">
-                    <text style={{ color: "#101828" }}>
-                      Receipt_January_2022.pdf
-                    </text>
-                    <text style={{ color: "#475467" }}>200 KB</text>
+              <input
+                type="file"
+                accept=".pdf"
+                onChange={(e) => {
+                  setSelectFile(e.target.files[0]);
+                }}
+              />
+              {selectFile && (
+                <div className="grid grid-flow-col justify-between border border-app-simpleBorder rounded-md p-2 m-5">
+                  <div className="grid grid-flow-col">
+                    <img src={pdf} alt="pdf logo" />
+                    <div className="grid grid-flow-row ml-5">
+                      <text style={{ color: "#101828" }}>
+                        {selectFile.name}
+                      </text>
+                      <text style={{ color: "#475467" }}>
+                        {returnFileSize(selectFile.size)}
+                      </text>
+                    </div>
+                  </div>
+                  <div>
+                    <Button
+                      variant="outlined"
+                      style={{ color: "#344054", borderColor: "#D0D5DD" }}
+                      onClick={DownloadFile}>
+                      Download
+                    </Button>
+                    <Button
+                      variant="contained"
+                      style={{
+                        backgroundColor: "#53783B",
+                        color: "#ffffff",
+                        marginLeft: 15,
+                      }}
+                      onClick={() => {
+                        navigation("/pdfview", { state: selectFile });
+                      }}>
+                      View
+                    </Button>
                   </div>
                 </div>
-                <div>
-                  <Button
-                    variant="outlined"
-                    style={{ color: "#344054", borderColor: "#D0D5DD" }}>
-                    Download
-                  </Button>
-                  <Button
-                    variant="contained"
-                    style={{
-                      backgroundColor: "#53783B",
-                      color: "#ffffff",
-                      marginLeft: 15,
-                    }}>
-                    View
-                  </Button>
-                </div>
-              </div>
-              <div className="grid grid-flow-col justify-between border border-app-simpleBorder rounded-md p-2 m-5">
-                <div className="grid grid-flow-col">
-                  <img src={pdf} alt="pdf logo" />
-                  <div className="grid grid-flow-row ml-5">
-                    <text style={{ color: "#101828" }}>
-                      Receipt_January_2022.pdf
-                    </text>
-                    <text style={{ color: "#475467" }}>200 KB</text>
-                  </div>
-                </div>
-                <div>
-                  <Button
-                    variant="outlined"
-                    style={{ color: "#344054", borderColor: "#D0D5DD" }}>
-                    Download
-                  </Button>
-                  <Button
-                    variant="contained"
-                    style={{
-                      backgroundColor: "#53783B",
-                      color: "#ffffff",
-                      marginLeft: 15,
-                    }}>
-                    View
-                  </Button>
-                </div>
-              </div>
+              )}
             </div>
           </div>
         </div>
@@ -278,7 +289,7 @@ export const PendingApproval = () => {
                   key={index}
                   className="grid grid-flow-col border border-app-gray p-2 mx-3 mb-2 rounded-md">
                   <div className="grid grid-flow-col justify-start gap-5 pl-5">
-                    <img src={avtar} alt="image" />
+                    <img src={avtar} alt="avtar" />
                     <div className="grid grid-flow-row">
                       <text>{data.timesheetName}</text>
                       <text>{data.status}</text>
