@@ -93,7 +93,7 @@ export const PendingApproval = () => {
 
   const DownloadFile = () => {
     // const pdfUrl = URL.createObjectURL(require("../../assets/GIL Letter.pdf"));
-    const pdfUrl = require("../../assets/GIL Letter.pdf");
+    const pdfUrl = require("../../assets/Dummy_Pdf.pdf");
     const link = document.createElement("a");
     link.href = pdfUrl;
     link.download = "newPdf.pdf"; // specify the filename
@@ -236,8 +236,8 @@ export const PendingApproval = () => {
                 <div className="grid grid-flow-col">
                   <img src={pdf} alt="pdf logo" />
                   <div className="grid grid-flow-row ml-5">
-                    <text style={{ color: "#101828" }}>GiL Letter</text>
-                    <text style={{ color: "#475467" }}>2.36 MB</text>
+                    <text style={{ color: "#101828" }}>Dummy_Pdf</text>
+                    <text style={{ color: "#475467" }}>366 KB</text>
                   </div>
                 </div>
                 <div>

@@ -16,8 +16,8 @@ export const PdfView = () => {
       </div>
       <iframe
         // src={URL.createObjectURL(location.state)}
-        src={require("../../assets/GIL Letter.pdf")}
-        title={"GIL Letter.pdf"}
+        src={require("../../assets/Dummy_Pdf.pdf")}
+        title={"Dummy_Pdf"}
         width="100%"
         height="93%"
       />
