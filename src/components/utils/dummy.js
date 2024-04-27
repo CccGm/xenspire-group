@@ -345,3 +345,84 @@ export const get_Data = async () => {
     return error;
   }
 };
+
+export const Dummy_Benifits = [
+  {
+    benifits: "Immigration/Attorney Help ",
+    status: "Active",
+    effectiveDate: "2024-04-01",
+    cost: "20",
+  },
+  {
+    benifits: "Legal Plan  ",
+    status: "Processing",
+    effectiveDate: "2024-08-01",
+    cost: "26",
+  },
+  {
+    benifits: "Medical plan ",
+    status: "Active",
+    effectiveDate: "2025-01-20",
+    cost: "13",
+  },
+  {
+    benifits: "Dental ",
+    status: "Active",
+    effectiveDate: "2024-04-01",
+    cost: "27",
+  },
+  {
+    benifits: "Immigration/Attorney Help ",
+    status: "Active",
+    effectiveDate: "2023-08-01",
+    cost: "20",
+  },
+  {
+    benifits: "Legal Plan ",
+    status: "Active",
+    effectiveDate: "2024-10-18",
+    cost: "22",
+  },
+  {
+    benifits: "Dental ",
+    status: "Active",
+    effectiveDate: "2024-04-01",
+    cost: "24",
+  },
+  {
+    benifits: "Immigration/Attorney Help ",
+    status: "Active",
+    effectiveDate: "2022-04-21",
+    cost: "20",
+  },
+  {
+    benifits: "Legal Plan ",
+    status: "Active",
+    effectiveDate: "2024-04-01",
+    cost: "24",
+  },
+  {
+    benifits: "Dental ",
+    status: "Active",
+    effectiveDate: "2025-06-30",
+    cost: "20",
+  },
+  {
+    benifits: "Legal Plan ",
+    status: "Active",
+    effectiveDate: "2024-04-01",
+    cost: "25",
+  },
+  {
+    benifits: "Dental ",
+    status: "Active",
+    effectiveDate: "2026-01-10",
+    cost: "20",
+  },
+  {
+    benifits: "Legal Plan ",
+    status: "Active",
+    effectiveDate: "2024-12-01",
+    cost: "18",
+  },
+];
