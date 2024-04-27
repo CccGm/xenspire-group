@@ -2,7 +2,6 @@ import * as React from "react";
 import { styled } from "@mui/material/styles";
 import MuiDrawer from "@mui/material/Drawer";
 import List from "@mui/material/List";
-import Divider from "@mui/material/Divider";
 import IconButton from "@mui/material/IconButton";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import ListItem from "@mui/material/ListItem";
@@ -130,12 +129,12 @@ export const SideNavAdmin = ({ setUser, email }) => {
               }}>
               <ListItemIcon
                 sx={{
-                  justifyContent: "center",
+                  justifyContent: "left",
                 }}>
                 {open ? (
                   <img src={logo2} alt="logo" width={180} />
                 ) : (
-                  <img src={logo1} alt="logo" width={60} />
+                  <img src={logo1} alt="logo" width={45} />
                 )}
               </ListItemIcon>
             </ListItem>
@@ -211,9 +210,9 @@ export const SideNavAdmin = ({ setUser, email }) => {
                 <ListItemButton
                   key={index}
                   sx={{
-                    justifyContent: "center",
+                    justifyContent: "left",
                     px: 2.5,
-                    margin: 1,
+                    pl: 10,
                     borderRadius: 2,
                     ":hover": { backgroundColor: "#CEEAB0" },
                   }}

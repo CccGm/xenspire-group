@@ -113,7 +113,7 @@ export const Home = () => {
                 <TableCell align="center" sx={{ backgroundColor: "#ffffff" }}>
                   <a
                     onClick={() => navigation("/approval")}
-                    className="underline ">
+                    className="underline hover:cursor-pointer hover:text-app-green">
                     Approve TimeSheet
                   </a>
                 </TableCell>
