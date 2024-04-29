@@ -106,7 +106,7 @@ export const SideNav = ({ setUser, email }) => {
   };
   const profile_name = [
     { name: "Documents", path: "/" },
-    { name: "Benifits", path: "/" },
+    { name: "Benifit", path: "/benifit" },
     { name: "Payroll", path: "/" },
     { name: "Profile Details", path: "/profile" },
   ];
