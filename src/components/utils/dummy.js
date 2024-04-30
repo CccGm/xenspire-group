@@ -456,3 +456,17 @@ export const Dummy_Benifits = [
     cost: "18",
   },
 ];
+
+export const Dummy_Payroll = [
+  { type: "Flexer Share", amount: 100, lastUpdate: "2024-04-01" },
+  { type: "Flexer Recognized Share", amount: 100, lastUpdate: "2024-04-01" },
+  { type: "Current payroll Amount", amount: 100, lastUpdate: "2024-04-01" },
+  { type: "Next payroll Amount", amount: 100, lastUpdate: "2024-04-01" },
+  { type: "Pre Payment payroll Amount", amount: 100, lastUpdate: "2024-04-01" },
+  { type: "Pre Payment Locator", amount: 100, lastUpdate: "2024-04-01" },
+  {
+    type: "Forecast with next Payroll Amount",
+    amount: 100,
+    lastUpdate: "2024-04-01",
+  },
+];
