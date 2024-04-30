@@ -1,33 +1,35 @@
 import React, { useState } from "react";
-import axios from "axios";
-import { ArrowBackOutlined } from "@mui/icons-material";
-import styles from "./forgot_pass.module.css";
+import styles from "./reset_pass.module.css";
 import logo from "../../assets/images/app-logo.png";
 import loginImage from "../../assets/images/login-app-icon.png";
 import icon from "../../assets/images/Featured icon.png";
+import axios from "axios";
 
-const Forgot_Pass = () => {
-  const [email, setEmail] = useState("");
+const Reset_Pass = () => {
+  const [password, setPassword] = useState("");
+  const [confimrPassword, setConfimPassword] = useState("");
 
-  const handleEmailChange = (e) => setEmail(e.target.value);
+  const handlePasswordChange = (e) => setPassword(e.target.value);
+  const handleConfirmPasswordChange = (e) => setConfimPassword(e.target.value);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       const response = await axios.post(
-        "http://localhost:3000/api/forgotpassword/",
+        "http://localhost:3000/api/resetpassword/",
         {
-          email,
+          password,
+          confimrPassword,
         }
       );
 
       if (response.status === 200) {
-        console.log("email send successfully");
+        console.log("change password successfully");
       } else {
-        console.log("email send failed");
+        console.log("change password failed");
       }
     } catch (error) {
-      console.error("email send error:", error.message);
+      console.error("change password error:", error.message);
     }
   };
 
@@ -43,36 +45,34 @@ const Forgot_Pass = () => {
               <div className={styles.form_wrapper}>
                 <div className={styles.title_wrap}>
                   <img src={icon} alt="icon" />
-                  <h1 className={styles.section_title}>Forgot Password</h1>
+                  <h1 className={styles.section_title}>Reset your Password</h1>
                   <span className={styles.sub_title}>
-                    No worries, we'll send you reset instructions.
+                    Must be at least 8 characters.
                   </span>
                 </div>
                 <form onSubmit={handleSubmit}>
                   <div className={styles.form_inner}>
                     <div className={styles.form_group}>
-                      <label htmlFor="email">Email*</label>
                       <input
-                        type="email"
-                        id="email"
-                        required
-                        placeholder="Enter your email"
-                        value={email}
-                        onChange={handleEmailChange}
+                        type="text"
+                        id="password"
+                        placeholder="Choose a password"
+                        value={password}
+                        onChange={handlePasswordChange}
+                      />
+                    </div>
+                    <div className={styles.form_group}>
+                      <input
+                        type="text"
+                        id="confirmPassword"
+                        placeholder="Confirm password"
+                        value={confimrPassword}
+                        onChange={handleConfirmPasswordChange}
                       />
                     </div>
 
                     <div className={styles.form_group}>
-                      <button type="submit">Reset Password</button>
-                    </div>
-                    <div className={styles.form_group}>
-                      <p className={styles.form_text}>
-                        <a href="/login">
-                          <ArrowBackOutlined />
-                          {"     "}
-                          Back to Log in
-                        </a>
-                      </p>
+                      <button type="submit">Continue</button>
                     </div>
                   </div>
                 </form>
@@ -107,4 +107,4 @@ const Forgot_Pass = () => {
   );
 };
 
-export default Forgot_Pass;
+export default Reset_Pass;

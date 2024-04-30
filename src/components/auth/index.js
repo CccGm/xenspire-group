@@ -3,6 +3,7 @@ import { Routes, Route, Navigate } from "react-router-dom";
 import Login from "./login";
 import Signup from "./signup";
 import ForgotPass from "./forgot_pass";
+import ResetPass from "./reset_pass";
 import Footer from "../widgets/footer";
 
 export const Auth = ({ setUser, setEmail }) => {
@@ -16,6 +17,7 @@ export const Auth = ({ setUser, setEmail }) => {
         />
         <Route path="signup" element={<Signup />} />
         <Route path="forgotPass" element={<ForgotPass />} />
+        <Route path="resetPass" element={<ResetPass />} />
         <Route path="*" element={<Navigate to="login" replace />} />
       </Routes>
       <Footer />

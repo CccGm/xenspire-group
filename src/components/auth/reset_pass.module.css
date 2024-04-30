@@ -167,26 +167,13 @@
                 background-color: #7B964A;
             }
 
-            input[type="email"] {
+            input[type="text"] {
                 height: 44px;
                 padding: 10px 14px;
                 color: #344054;
                 width: 100%;
                 border: 1px solid #D0D5DD;
                 border-radius: 8px;
-            }
-
-            .form_text {
-                text-align: center;
-                display: block;
-                color: #53783B;
-                font-size: 17px;
-                margin-top: 32px;
-
-                a {
-                    color: #53783B;
-                    font-weight: 600;
-                }
             }
 
         }
