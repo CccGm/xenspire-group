@@ -1,6 +1,7 @@
 import React from "react";
 import {
   Button,
+  Chip,
   Table,
   TableBody,
   TableCell,
@@ -11,6 +12,7 @@ import {
 import { styled } from "@mui/material/styles";
 import { Dummy_Benifits } from "../utils/dummy";
 import { PopUp } from "../common/popup";
+import { FiberManualRecord } from "@mui/icons-material";
 
 export const Benifit = () => {
   const [array, serArray] = React.useState(Dummy_Benifits);
@@ -46,6 +48,30 @@ export const Benifit = () => {
 
   const onCloseDialoge = () => {
     setDialogeOpen(false);
+  };
+
+  const RenderStatus = ({ data }) => {
+    let colorCode = "";
+    let BgColorCode = "";
+    if (data === "Active") {
+      colorCode = "success";
+      BgColorCode = "#ECFDF3";
+    } else if (data === "Processing") {
+      colorCode = "warning";
+      BgColorCode = "#FFFAEB";
+    } else if (data === "InActive") {
+      colorCode = "error";
+      BgColorCode = "#FEF3F2";
+    }
+    return (
+      <Chip
+        icon={<FiberManualRecord fontSize="10" />}
+        label={data}
+        color={colorCode}
+        variant="outlined"
+        style={{ backgroundColor: BgColorCode }}
+      />
+    );
   };
 
   return (
@@ -91,7 +117,7 @@ export const Benifit = () => {
                   {row.benifits}
                 </TableCell>
                 <TableCell align="center" sx={{ backgroundColor: "#ffffff" }}>
-                  {row.status}
+                  <RenderStatus data={row.status} />
                 </TableCell>
                 <TableCell align="center" sx={{ backgroundColor: "#ffffff" }}>
                   {row.effectiveDate}

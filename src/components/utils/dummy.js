@@ -361,7 +361,7 @@ export const Dummy_Benifits = [
   },
   {
     benifits: "Medical plan ",
-    status: "Active",
+    status: "InActive",
     effectiveDate: "2025-01-20",
     cost: "13",
   },
@@ -385,7 +385,7 @@ export const Dummy_Benifits = [
   },
   {
     benifits: "Vision ",
-    status: "Active",
+    status: "Processing",
     effectiveDate: "2024-04-01",
     cost: "24",
   },
@@ -397,13 +397,13 @@ export const Dummy_Benifits = [
   },
   {
     benifits: "Short Term",
-    status: "Active",
+    status: "InActive",
     effectiveDate: "2022-04-21",
     cost: "20",
   },
   {
     benifits: "Long Term",
-    status: "Active",
+    status: "InActive",
     effectiveDate: "2022-04-21",
     cost: "20",
   },
@@ -415,7 +415,7 @@ export const Dummy_Benifits = [
   },
   {
     benifits: "Education Benifits",
-    status: "Active",
+    status: "Processing",
     effectiveDate: "2024-04-01",
     cost: "24",
   },
@@ -427,25 +427,25 @@ export const Dummy_Benifits = [
   },
   {
     benifits: "Child & Family Care",
-    status: "Active",
+    status: "InActive",
     effectiveDate: "2025-06-30",
     cost: "20",
   },
   {
     benifits: "401k Benifits",
-    status: "Active",
+    status: "InActive",
     effectiveDate: "2025-06-30",
     cost: "20",
   },
   {
     benifits: "Commuter Benefits ",
-    status: "Active",
+    status: "Processing",
     effectiveDate: "2024-04-01",
     cost: "25",
   },
   {
     benifits: "Dental ",
-    status: "Active",
+    status: "Processing",
     effectiveDate: "2026-01-10",
     cost: "20",
   },
