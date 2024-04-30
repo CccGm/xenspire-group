@@ -19,10 +19,10 @@ export const Approval = () => {
 
   const StyledTableRow = styled(TableRow)(({ theme }) => ({
     "&:nth-of-type(odd)": {
-      backgroundColor: "#F9FAFB",
+      backgroundColor: "#ffffff",
     },
     "&:nth-of-type(even)": {
-      backgroundColor: "#F9FAFB",
+      backgroundColor: "#ffffff",
     },
     // hide last border
     "&:last-child td, &:last-child th": {
@@ -32,14 +32,16 @@ export const Approval = () => {
 
   const StyledTableHead = styled(TableHead)`
     & .MuiTableCell-root {
-      background-color: #53783b;
+      background-color: #f9fafb;
     }
   `;
 
   const StyledTableContainer = styled(TableContainer)`
-    border-top-left-radius: 0.3rem;
-    border-top-right-radius: 0.3rem;
+    border-radius: 1rem;
     max-height: 500px;
+    ::-webkit-scrollbar {
+      display: none;
+    }
   `;
 
   return (
@@ -55,28 +57,28 @@ export const Approval = () => {
         </text>
       </div>
       {/* table */}
-      <StyledTableContainer sx={{ borderWidth: 1 }}>
+      <StyledTableContainer sx={{ borderWidth: 1, borderColor: "#D1D1D1" }}>
         <Table aria-label="customized table" stickyHeader>
           <StyledTableHead>
             <TableRow>
               <TableCell
                 align="center"
-                style={{ fontWeight: "bold", color: "#ffffff" }}>
+                style={{ fontWeight: "bold", color: "#475467" }}>
                 Name
               </TableCell>
               <TableCell
                 align="center"
-                style={{ fontWeight: "bold", color: "#ffffff" }}>
+                style={{ fontWeight: "bold", color: "#475467" }}>
                 Start Date
               </TableCell>
               <TableCell
                 align="center"
-                style={{ fontWeight: "bold", color: "#ffffff" }}>
+                style={{ fontWeight: "bold", color: "#475467" }}>
                 End Date
               </TableCell>
               <TableCell
                 align="center"
-                style={{ fontWeight: "bold", color: "#ffffff" }}>
+                style={{ fontWeight: "bold", color: "#475467" }}>
                 Status
               </TableCell>
             </TableRow>

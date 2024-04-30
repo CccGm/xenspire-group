@@ -122,6 +122,7 @@ export const SideNavAdmin = ({ setUser, email }) => {
 
         <div className="h-full bg-app-LightTeal bg-white">
           <List>
+            {/* logo */}
             <ListItem
               sx={{
                 justifyContent: open ? "initial" : "center",
@@ -204,6 +205,7 @@ export const SideNavAdmin = ({ setUser, email }) => {
                 </ListItemIcon>
               </ListItemButton>
             )}
+            {/* open widges */}
             {open &&
               expanded &&
               name.map((data, index) => (

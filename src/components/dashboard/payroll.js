@@ -15,10 +15,10 @@ export const Payroll = () => {
 
   const StyledTableRow = styled(TableRow)(({ theme }) => ({
     "&:nth-of-type(odd)": {
-      backgroundColor: "#F9FAFB",
+      backgroundColor: "#ffffff",
     },
     "&:nth-of-type(even)": {
-      backgroundColor: "#F9FAFB",
+      backgroundColor: "#ffffff",
     },
     // hide last border
     "&:last-child td, &:last-child th": {
@@ -67,18 +67,12 @@ export const Payroll = () => {
               </TableCell>
             </TableRow>
           </StyledTableHead>
-          <TableBody sx={{ backgroundColor: "#ffffff" }}>
+          <TableBody>
             {array.map((row, index) => (
-              <StyledTableRow key={index} sx={{ backgroundColor: "#ffffff" }}>
-                <TableCell sx={{ backgroundColor: "#ffffff" }}>
-                  {row.type}
-                </TableCell>
-                <TableCell align="center" sx={{ backgroundColor: "#ffffff" }}>
-                  $ {row.amount}
-                </TableCell>
-                <TableCell align="center" sx={{ backgroundColor: "#ffffff" }}>
-                  {row.lastUpdate}
-                </TableCell>
+              <StyledTableRow key={index}>
+                <TableCell>{row.type}</TableCell>
+                <TableCell align="center">$ {row.amount}</TableCell>
+                <TableCell align="center">{row.lastUpdate}</TableCell>
               </StyledTableRow>
             ))}
           </TableBody>

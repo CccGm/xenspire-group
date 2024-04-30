@@ -21,10 +21,10 @@ export const Benifit = () => {
 
   const StyledTableRow = styled(TableRow)(({ theme }) => ({
     "&:nth-of-type(odd)": {
-      backgroundColor: "#F9FAFB",
+      backgroundColor: "#ffffff",
     },
     "&:nth-of-type(even)": {
-      backgroundColor: "#F9FAFB",
+      backgroundColor: "#ffffff",
     },
     // hide last border
     "&:last-child td, &:last-child th": {
@@ -110,22 +110,16 @@ export const Benifit = () => {
                 style={{ fontWeight: "bold", color: "#475467" }}></TableCell>
             </TableRow>
           </StyledTableHead>
-          <TableBody sx={{ backgroundColor: "#ffffff" }}>
+          <TableBody>
             {array.map((row, index) => (
-              <StyledTableRow key={index} sx={{ backgroundColor: "#ffffff" }}>
-                <TableCell align="center" sx={{ backgroundColor: "#ffffff" }}>
-                  {row.benifits}
-                </TableCell>
-                <TableCell align="center" sx={{ backgroundColor: "#ffffff" }}>
+              <StyledTableRow key={index}>
+                <TableCell align="center">{row.benifits}</TableCell>
+                <TableCell align="center">
                   <RenderStatus data={row.status} />
                 </TableCell>
-                <TableCell align="center" sx={{ backgroundColor: "#ffffff" }}>
-                  {row.effectiveDate}
-                </TableCell>
-                <TableCell align="center" sx={{ backgroundColor: "#ffffff" }}>
-                  $ {row.cost}
-                </TableCell>
-                <TableCell align="center" sx={{ backgroundColor: "#ffffff" }}>
+                <TableCell align="center">{row.effectiveDate}</TableCell>
+                <TableCell align="center">$ {row.cost}</TableCell>
+                <TableCell align="center">
                   <Button
                     style={{ color: "white", borderColor: "#7F56D9" }}
                     variant="contained"

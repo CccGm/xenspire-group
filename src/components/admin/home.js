@@ -25,10 +25,10 @@ export const Home = () => {
 
   const StyledTableRow = styled(TableRow)(({ theme }) => ({
     "&:nth-of-type(odd)": {
-      backgroundColor: "#F9FAFB",
+      backgroundColor: "#ffffff",
     },
     "&:nth-of-type(even)": {
-      backgroundColor: "#F9FAFB",
+      backgroundColor: "#ffffff",
     },
     // hide last border
     "&:last-child td, &:last-child th": {
@@ -96,21 +96,13 @@ export const Home = () => {
               </TableCell>
             </TableRow>
           </StyledTableHead>
-          <TableBody sx={{ backgroundColor: "#ffffff" }}>
+          <TableBody>
             {array.map((row) => (
-              <StyledTableRow
-                key={row.name}
-                sx={{ backgroundColor: "#ffffff" }}>
-                <TableCell align="center" sx={{ backgroundColor: "#ffffff" }}>
-                  {row.name}
-                </TableCell>
-                <TableCell align="center" sx={{ backgroundColor: "#ffffff" }}>
-                  {row.email}
-                </TableCell>
-                <TableCell align="center" sx={{ backgroundColor: "#ffffff" }}>
-                  {row.timesheet}
-                </TableCell>
-                <TableCell align="center" sx={{ backgroundColor: "#ffffff" }}>
+              <StyledTableRow key={row.name}>
+                <TableCell align="center">{row.name}</TableCell>
+                <TableCell align="center">{row.email}</TableCell>
+                <TableCell align="center">{row.timesheet}</TableCell>
+                <TableCell align="center">
                   <a
                     onClick={() => navigation("/approval")}
                     className="underline hover:cursor-pointer hover:text-app-green">

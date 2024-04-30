@@ -5,7 +5,11 @@ import {
   ListItemIcon,
   ListItemText,
 } from "@mui/material";
-import { LogoutOutlined } from "@mui/icons-material";
+import {
+  KeyboardArrowDownOutlined,
+  KeyboardArrowUpOutlined,
+  LogoutOutlined,
+} from "@mui/icons-material";
 import { useNavigate } from "react-router-dom";
 import { styled } from "@mui/material/styles";
 import MuiDrawer from "@mui/material/Drawer";
@@ -18,7 +22,8 @@ import avtar from "../../assets/images/Avatar.png";
 import home from "../../assets/images/home-icon.png";
 import profile from "../../assets/images/profile-icon.png";
 import time from "../../assets/images/timesheets-icon.png";
-import logo from "../../assets/images/Logo.png";
+import logo1 from "../../assets/images/Logo.png";
+import logo2 from "../../assets/images/app-logo.png";
 import Footer from "./footer";
 
 export const SideNav = ({ setUser, email }) => {
@@ -114,33 +119,30 @@ export const SideNav = ({ setUser, email }) => {
   return (
     <>
       <Drawer variant="permanent" open={open}>
-        <DrawerHeader sx={{ backgroundColor: "#D1D1D1" }}>
+        <DrawerHeader sx={{ backgroundColor: "#ffffff" }}>
           <IconButton onClick={handleDrawer}>
             {open ? <ChevronLeftIcon /> : <MenuIcon />}
           </IconButton>
         </DrawerHeader>
         <Divider />
-        <div className="h-full bg-app-LightTeal bg-app-gray">
+        <div className="h-full bg-app-LightTeal bg-white">
           <List>
+            {/* logo */}
             <ListItem
               sx={{
                 justifyContent: open ? "initial" : "center",
-                p: 2.5,
+                p: 2,
               }}>
               <ListItemIcon
                 sx={{
-                  justifyContent: "center",
+                  justifyContent: "left",
                 }}>
-                <img src={logo} alt="logo" width={60} />
+                {open ? (
+                  <img src={logo2} alt="logo" width={180} />
+                ) : (
+                  <img src={logo1} alt="logo" width={45} />
+                )}
               </ListItemIcon>
-              <ListItemText
-                primary={"Xenspire Group"}
-                sx={{ opacity: open ? 1 : 0, color: "#53783B", fontSize: 30 }}
-                primaryTypographyProps={{
-                  fontSize: "21px",
-                  fontWeight: "700",
-                }}
-              />
             </ListItem>
 
             {data.map((data, index) => (
@@ -149,10 +151,9 @@ export const SideNav = ({ setUser, email }) => {
                 sx={{
                   justifyContent: open ? "initial" : "center",
                   px: 2.5,
-                  backgroundColor: "#53783B",
                   margin: 1,
                   borderRadius: 2,
-                  ":hover": { backgroundColor: "#1283af" },
+                  ":hover": { backgroundColor: "#CEEAB0" },
                 }}
                 onClick={() => navigation(data.path)}>
                 <ListItemIcon
@@ -165,6 +166,10 @@ export const SideNav = ({ setUser, email }) => {
                 </ListItemIcon>
                 <ListItemText
                   primary={data.name}
+                  primaryTypographyProps={{
+                    fontWeight: "bold",
+                    color: "#344054",
+                  }}
                   sx={{ opacity: open ? 1 : 0 }}
                 />
               </ListItemButton>
@@ -175,10 +180,9 @@ export const SideNav = ({ setUser, email }) => {
                 sx={{
                   justifyContent: open ? "initial" : "center",
                   px: 2.5,
-                  backgroundColor: "#53783B",
                   margin: 1,
                   borderRadius: 2,
-                  ":hover": { backgroundColor: "#1283af" },
+                  ":hover": { backgroundColor: "#CEEAB0" },
                 }}
                 onClick={() => handleChange()}>
                 <ListItemIcon
@@ -191,26 +195,40 @@ export const SideNav = ({ setUser, email }) => {
                 </ListItemIcon>
                 <ListItemText
                   primary={"Profile"}
-                  sx={{ ":hover": { color: "white" } }}
+                  primaryTypographyProps={{
+                    fontWeight: "bold",
+                    color: "#344054",
+                  }}
                 />
+                <ListItemIcon
+                  sx={{
+                    justifyContent: "right",
+                  }}>
+                  {expanded ? (
+                    <KeyboardArrowUpOutlined />
+                  ) : (
+                    <KeyboardArrowDownOutlined />
+                  )}
+                </ListItemIcon>
               </ListItemButton>
             )}
-
+            {/* open widges */}
             {open &&
               expanded &&
               profile_name.map((data, index) => (
                 <ListItemButton
                   key={index}
                   sx={{
-                    justifyContent: "center",
+                    justifyContent: "left",
                     px: 2.5,
-                    backgroundColor: "#CEEAB0",
-                    margin: 1,
+                    pl: 10,
                     borderRadius: 2,
-                    ":hover": { backgroundColor: "#7B964A", color: "#ffffff" },
+                    ":hover": { backgroundColor: "#CEEAB0" },
                   }}
                   onClick={() => navigation(data.path)}>
-                  <text>{data.name}</text>
+                  <text style={{ color: "#344054", fontWeight: "500" }}>
+                    {data.name}
+                  </text>
                 </ListItemButton>
               ))}
           </List>

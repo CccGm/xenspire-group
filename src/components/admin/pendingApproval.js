@@ -30,10 +30,10 @@ export const PendingApproval = () => {
 
   const StyledTableRow = styled(TableRow)(({ theme }) => ({
     "&:nth-of-type(odd)": {
-      backgroundColor: "#F9FAFB",
+      backgroundColor: "#ffffff",
     },
     "&:nth-of-type(even)": {
-      backgroundColor: "#F9FAFB",
+      backgroundColor: "#ffffff",
     },
     // hide last border
     "&:last-child td, &:last-child th": {
@@ -66,14 +66,16 @@ export const PendingApproval = () => {
 
   const StyledTableHead = styled(TableHead)`
     & .MuiTableCell-root {
-      background-color: #53783b;
+      background-color: #f9fafb;
     }
   `;
 
   const StyledTableContainer = styled(TableContainer)`
-    border-top-left-radius: 0.3rem;
-    border-top-right-radius: 0.3rem;
+    border-radius: 1rem;
     max-height: 400px;
+    ::-webkit-scrollbar {
+      display: none;
+    }
   `;
 
   const statusChagehandler = (e, index) => {
@@ -165,27 +167,27 @@ export const PendingApproval = () => {
       <div className="grid grid-flow-col">
         <div className="grid grid-flow-row">
           {/* table */}
-          <StyledTableContainer sx={{ borderWidth: 1 }}>
+          <StyledTableContainer sx={{ borderWidth: 1, borderColor: "#D1D1D1" }}>
             <Table aria-label="customized table" stickyHeader>
               <StyledTableHead>
                 <TableRow>
                   <TableCell></TableCell>
-                  <TableCell style={{ fontWeight: "bold", color: "#ffffff" }}>
+                  <TableCell style={{ fontWeight: "bold", color: "#475467" }}>
                     Name
                   </TableCell>
                   <TableCell
                     align="center"
-                    style={{ fontWeight: "bold", color: "#ffffff" }}>
+                    style={{ fontWeight: "bold", color: "#475467" }}>
                     Date
                   </TableCell>
                   <TableCell
                     align="center"
-                    style={{ fontWeight: "bold", color: "#ffffff" }}>
+                    style={{ fontWeight: "bold", color: "#475467" }}>
                     Hours
                   </TableCell>
                   <TableCell
                     align="center"
-                    style={{ fontWeight: "bold", color: "#ffffff" }}>
+                    style={{ fontWeight: "bold", color: "#475467" }}>
                     Status
                   </TableCell>
                 </TableRow>
@@ -240,7 +242,7 @@ export const PendingApproval = () => {
                     <text style={{ color: "#475467" }}>366 KB</text>
                   </div>
                 </div>
-                <div>
+                <div className="items-center flex">
                   <Button
                     variant="outlined"
                     style={{ color: "#344054", borderColor: "#D0D5DD" }}
